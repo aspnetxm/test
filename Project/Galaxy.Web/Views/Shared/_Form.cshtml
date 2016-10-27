@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/site", "~/bundles/bootstrap")
+    @Scripts.Render("/bundles/jquery", "~/bundles/bootstrap");
+    @*<link href="~/Content/css/framework-font.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />*@
+    @*<script src="~/Scripts/jquery/jquery-2.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap.js"></script>*@
+    @*<link href="~/Scripts/bootstrap/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/Content/Scripts/wdtree/tree.js"></script>
+    <link href="~/Scripts/wdtree/tree.css" rel="stylesheet" />
+    <link href="~/Scripts/select2/select2.min.css" rel="stylesheet" />
+    <script src="~/Scripts/select2/select2.min.js"></script>
+    <link href="~/Scripts/wizard/wizard.css" rel="stylesheet" />
+    <script src="~/Scripts/wizard/wizard.js"></script>
+    <script src="~/Scripts/validate/jquery.validate.min.js"></script>
+    <script src="~/Scripts/datepicker/WdatePicker.js"></script>
+    @*<link href="~/Content/css/framework-ui.css" rel="stylesheet" />*@
+    <script src="~/Scripts/framework-ui.js"></script>
+</head>
+<body>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+</body>
+</html>
