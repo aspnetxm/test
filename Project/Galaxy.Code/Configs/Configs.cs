@@ -18,7 +18,7 @@ namespace Galaxy.Code
         /// <returns>Connection中name的值</returns>
         public static string GetConnection(string key)
         {
-            return ConfigurationManager.ConnectionStrings[key].ToString();
+            return ConfigurationManager.ConnectionStrings[key].ConnectionString;
         }
         #endregion
 

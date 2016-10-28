@@ -42,6 +42,10 @@ namespace Galaxy.Web.Controllers
                 {
                     return Json(new { state = "error", message = ModelState.ToError() });
                 }
+                if (model.Code != Session["Code"].ToString())
+                {
+                    return Json(new { state = "error", message = "验证码错误" });
+                }
 
                 var user = await _userService.Login(model.UserName, model.Password);
 

@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Repository", "Galaxy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Domain", "Galaxy.Domain\Galaxy.Domain.csproj", "{83C1C280-99A4-417C-BE22-BCDD1C0BA732}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Galaxy.Test", "Galaxy.Test", "{4B72D516-F497-4018-B527-92D1C43AE7E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.UnitTest", "Galaxy.UnitTest\Galaxy.UnitTest.csproj", "{D7822266-D194-41BB-9B8D-B5BECDC850A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{83C1C280-99A4-417C-BE22-BCDD1C0BA732}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83C1C280-99A4-417C-BE22-BCDD1C0BA732}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83C1C280-99A4-417C-BE22-BCDD1C0BA732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7822266-D194-41BB-9B8D-B5BECDC850A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7822266-D194-41BB-9B8D-B5BECDC850A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7822266-D194-41BB-9B8D-B5BECDC850A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7822266-D194-41BB-9B8D-B5BECDC850A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +77,6 @@ Global
 		{F70F96EA-F8FB-4834-BB51-170BC9661DA2} = {06CB6FC9-BE83-4F84-A8CD-1E9BD2687E28}
 		{DBEA326E-1ADD-4525-B4AA-9809A8B41ED7} = {06CB6FC9-BE83-4F84-A8CD-1E9BD2687E28}
 		{83C1C280-99A4-417C-BE22-BCDD1C0BA732} = {06CB6FC9-BE83-4F84-A8CD-1E9BD2687E28}
+		{D7822266-D194-41BB-9B8D-B5BECDC850A9} = {4B72D516-F497-4018-B527-92D1C43AE7E2}
 	EndGlobalSection
 EndGlobal

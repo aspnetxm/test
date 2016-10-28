@@ -7,7 +7,7 @@ namespace Galaxy.Web.Models
     {
         [Required]
         [Display(Name = "电子邮件")]
-        [EmailAddress]
+        //[EmailAddress]
         public string UserName { get; set; }
 
         [Required]

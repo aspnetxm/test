@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBContext\PandaDbContext.cs" />
+    <Compile Include="DBContext\GalaxyDbContext.cs" />
     <Compile Include="Extensions\DbHelper.cs" />
     <Compile Include="Extensions\Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
