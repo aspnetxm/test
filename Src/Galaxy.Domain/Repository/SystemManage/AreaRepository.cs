@@ -4,12 +4,12 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class AreaRepository : RepositoryBase<AreaEntity>, IAreaRepository
+    public class AreaRepository : RepositoryBase<Area>, IAreaRepository
     {
         
     }

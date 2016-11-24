@@ -4,13 +4,13 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IItemsDetailRepository : IRepositoryBase<ItemsDetailEntity>
+    public interface IItemsDetailRepository : IRepositoryBase<ItemsDetail>
     {
-        List<ItemsDetailEntity> GetItemList(string enCode);
+        List<ItemsDetail> GetItemList(string enCode);
     }
 }

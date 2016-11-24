@@ -10,9 +10,9 @@ using System.Collections.Generic;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class ModuleButtonRepository : RepositoryBase<ModuleButtonEntity>, IModuleButtonRepository
+    public class ModuleButtonRepository : RepositoryBase<ModuleButton>, IModuleButtonRepository
     {
-        public void SubmitCloneButton(List<ModuleButtonEntity> entitys)
+        public void SubmitCloneButton(List<ModuleButton> entitys)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {

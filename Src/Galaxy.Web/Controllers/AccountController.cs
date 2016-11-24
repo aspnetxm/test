@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-
 using Galaxy.Web.Models;
 using Galaxy.Code;
-using Galaxy.Application.Service;
+using Galaxy.Application.Interfaces.SystemManage;
 
 namespace Galaxy.Web.Controllers
 {
@@ -42,23 +41,23 @@ namespace Galaxy.Web.Controllers
                 return Json(new { state = "error", message = ModelState.ToError() });
             }
 
-            var r = await _userService.Login(model.UserName, model.Password);
-            if (!r.IsSuccess)
+            var r = await _userService.Verification(model.UserName, model.Password);
+            if (!r.IsSuc)
             {
-                return Json(new { state = "error", message = r.Msg });
+                return Json(new { state = "error", message = r.Error });
             }
 
             //登录成功 
             ClaimsIdentity identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
-            identity.AddClaim(new Claim(ClaimTypes.Name, r.Data.Account));
-            identity.AddClaim(new Claim(ClaimTypes.Sid, r.Data.Id));
-            identity.AddClaim(new Claim("DisplayName", r.Data.NickName));
+            identity.AddClaim(new Claim(ClaimTypes.Name, r.User.Account));
+            identity.AddClaim(new Claim(ClaimTypes.Sid, r.User.Id));
+            identity.AddClaim(new Claim("DisplayName", r.User.NickName));
             OperatorModel operatorMode = new OperatorModel
             {
-                IsSystem = r.Data.IsAdministrator == true,
-                UserId = r.Data.Id,
-                RoleId = r.Data.RoleId,
-                UserName = r.Data.Account,
+                IsSystem = r.User.IsAdministrator == true,
+                UserId = r.User.Id,
+                RoleId = r.User.RoleId,
+                UserName = r.User.Account,
                 LoginTime = DateTime.Now,
                 LoginIPAddress = ""
             };

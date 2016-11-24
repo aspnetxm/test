@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace Galaxy.Data
 {
-    public class GalaxyDbContext: DbContext
+    public class GalaxyDbContext : DbContext
     {
         public GalaxyDbContext()
             : base("GalaxyDbContext")

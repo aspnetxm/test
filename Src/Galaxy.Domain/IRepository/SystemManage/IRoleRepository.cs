@@ -4,14 +4,14 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IRoleRepository : IRepositoryBase<RoleEntity>
+    public interface IRoleRepository : IRepositoryBase<Role>
     {
         void DeleteForm(string keyValue);
-        void SubmitForm(RoleEntity roleEntity, List<RoleAuthorizeEntity> roleAuthorizeEntitys, string keyValue);
+        void SubmitForm(Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue);
     }
 }

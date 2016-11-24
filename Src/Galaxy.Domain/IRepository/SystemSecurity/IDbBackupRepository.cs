@@ -4,13 +4,13 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 
 namespace Galaxy.Domain.IRepository.SystemSecurity
 {
-    public interface IDbBackupRepository : IRepositoryBase<DbBackupEntity>
+    public interface IDbBackupRepository : IRepositoryBase<DbBackup>
     {
         void DeleteForm(string keyValue);
-        void ExecuteDbBackup(DbBackupEntity dbBackupEntity);
+        void ExecuteDbBackup(DbBackup dbBackupEntity);
     }
 }

@@ -10,7 +10,7 @@ using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class RoleAuthorizeRepository : RepositoryBase<RoleAuthorizeEntity>, IRoleAuthorizeRepository
+    public class RoleAuthorizeRepository : RepositoryBase<RoleAuthorize>, IRoleAuthorizeRepository
     {
     }
 }

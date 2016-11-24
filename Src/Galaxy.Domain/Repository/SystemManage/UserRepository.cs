@@ -10,14 +10,14 @@ using Galaxy.Domain.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class UserRepository : RepositoryBase<UserEntity>, IUserRepository
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
         public void Delete(string keyValue)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {
-                db.Delete<UserEntity>(t => t.Id == keyValue);
-                db.Delete<UserLogOnEntity>(t => t.UserId == keyValue);
+                db.Delete<User>(t => t.Id == keyValue);
+                db.Delete<UserLogOn>(t => t.UserId == keyValue);
                 db.Commit();
             }
         }
@@ -27,7 +27,7 @@ namespace Galaxy.Repository.SystemManage
         /// </summary>
         /// <param name="userEntity"></param>
         /// <param name="userLogOnEntity"></param>
-        public void Update(UserEntity userEntity, UserLogOnEntity userLogOnEntity)
+        public void Update(User userEntity, UserLogOn userLogOnEntity)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {
@@ -38,7 +38,7 @@ namespace Galaxy.Repository.SystemManage
         }
 
 
-        public void Insert(UserEntity userEntity, UserLogOnEntity userLogOnEntity)
+        public void Insert(User userEntity, UserLogOn userLogOnEntity)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {

@@ -17,16 +17,16 @@ namespace Galaxy.Application.SystemManage
     {
         private IModuleButtonRepository service = new ModuleButtonRepository();
 
-        public List<ModuleButtonEntity> GetList(string moduleId = "")
+        public List<ModuleButton> GetList(string moduleId = "")
         {
-            var expression = LinqExt.True<ModuleButtonEntity>();
+            var expression = LinqExt.True<ModuleButton>();
             if (!string.IsNullOrEmpty(moduleId))
             {
                 expression = expression.And(t => t.ModuleId == moduleId);
             }
             return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
-        public ModuleButtonEntity GetForm(string keyValue)
+        public ModuleButton GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -41,7 +41,7 @@ namespace Galaxy.Application.SystemManage
                 service.Delete(t => t.Id == keyValue);
             }
         }
-        public void SubmitForm(ModuleButtonEntity moduleButtonEntity, string keyValue)
+        public void SubmitForm(ModuleButton moduleButtonEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
@@ -58,10 +58,10 @@ namespace Galaxy.Application.SystemManage
         {
             string[] ArrayId = Ids.Split(',');
             var data = this.GetList();
-            List<ModuleButtonEntity> entitys = new List<ModuleButtonEntity>();
+            List<ModuleButton> entitys = new List<ModuleButton>();
             foreach (string item in ArrayId)
             {
-                ModuleButtonEntity moduleButtonEntity = data.Find(t => t.Id == item);
+                ModuleButton moduleButtonEntity = data.Find(t => t.Id == item);
                 moduleButtonEntity.Id = Common.GuId();
                 moduleButtonEntity.ModuleId = moduleId;
                 entitys.Add(moduleButtonEntity);

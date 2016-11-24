@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class ModuleButtonMap : EntityTypeConfiguration<ModuleButtonEntity>
+    public class ModuleButtonMap : EntityTypeConfiguration<ModuleButton>
     {
         public ModuleButtonMap()
         {

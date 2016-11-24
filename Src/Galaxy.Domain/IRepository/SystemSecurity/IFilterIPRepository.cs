@@ -4,11 +4,11 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 
 namespace Galaxy.Domain.IRepository.SystemSecurity
 {
-    public interface IFilterIPRepository : IRepositoryBase<FilterIPEntity>
+    public interface IFilterIPRepository : IRepositoryBase<FilterIP>
     {
         
     }

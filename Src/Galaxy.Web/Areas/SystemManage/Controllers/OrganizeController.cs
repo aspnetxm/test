@@ -22,7 +22,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = organizeApp.GetList();
             var treeList = new List<TreeSelectModel>();
-            foreach (OrganizeEntity item in data)
+            foreach (Organize item in data)
             {
                 TreeSelectModel treeModel = new TreeSelectModel();
                 treeModel.id = item.Id;
@@ -39,7 +39,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = organizeApp.GetList();
             var treeList = new List<TreeViewModel>();
-            foreach (OrganizeEntity item in data)
+            foreach (Organize item in data)
             {
                 TreeViewModel tree = new TreeViewModel();
                 bool hasChildren = data.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -64,7 +64,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
                 data = data.TreeWhere(t => t.FullName.Contains(keyword));
             }
             var treeList = new List<TreeGridModel>();
-            foreach (OrganizeEntity item in data)
+            foreach (Organize item in data)
             {
                 TreeGridModel treeModel = new TreeGridModel();
                 bool hasChildren = data.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -87,7 +87,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(OrganizeEntity organizeEntity, string keyValue)
+        public ActionResult SubmitForm(Organize organizeEntity, string keyValue)
         {
             organizeApp.SubmitForm(organizeEntity, keyValue,"");
             return Success("操作成功。");

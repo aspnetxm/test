@@ -29,7 +29,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = itemsDetailApp.GetItemList(enCode);
             List<object> list = new List<object>();
-            foreach (ItemsDetailEntity item in data)
+            foreach (ItemsDetail item in data)
             {
                 list.Add(new { id = item.ItemCode, text = item.ItemName });
             }
@@ -45,7 +45,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(ItemsDetailEntity itemsDetailEntity, string keyValue)
+        public ActionResult SubmitForm(ItemsDetail itemsDetailEntity, string keyValue)
         {
             itemsDetailApp.SubmitForm(itemsDetailEntity, keyValue);
             return Success("操作成功。");

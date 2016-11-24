@@ -5,11 +5,11 @@
 *********************************************************************************/
 
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IItemsRepository : IRepositoryBase<ItemsEntity>
+    public interface IItemsRepository : IRepositoryBase<Items>
     {
     }
 }

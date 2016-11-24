@@ -16,9 +16,9 @@ namespace Galaxy.Application.SystemManage
     {
         private IItemsDetailRepository service = new ItemsDetailRepository();
 
-        public List<ItemsDetailEntity> GetList(string itemId = "", string keyword = "")
+        public List<ItemsDetail> GetList(string itemId = "", string keyword = "")
         {
-            var expression = LinqExt.True<ItemsDetailEntity>();
+            var expression = LinqExt.True<ItemsDetail>();
             if (!string.IsNullOrEmpty(itemId))
             {
                 expression = expression.And(t => t.ItemId == itemId);
@@ -30,11 +30,11 @@ namespace Galaxy.Application.SystemManage
             }
             return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
-        public List<ItemsDetailEntity> GetItemList(string enCode)
+        public List<ItemsDetail> GetItemList(string enCode)
         {
             return service.GetItemList(enCode);
         }
-        public ItemsDetailEntity GetForm(string keyValue)
+        public ItemsDetail GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -42,7 +42,7 @@ namespace Galaxy.Application.SystemManage
         {
             service.Delete(t => t.Id == keyValue);
         }
-        public void SubmitForm(ItemsDetailEntity itemsDetailEntity, string keyValue)
+        public void SubmitForm(ItemsDetail itemsDetailEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {

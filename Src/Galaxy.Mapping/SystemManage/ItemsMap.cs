@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class ItemsMap : EntityTypeConfiguration<ItemsEntity>
+    public class ItemsMap : EntityTypeConfiguration<Items>
     {
         public ItemsMap()
         {

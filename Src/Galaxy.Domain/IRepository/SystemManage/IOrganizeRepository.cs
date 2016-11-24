@@ -4,11 +4,11 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IOrganizeRepository : IRepositoryBase<OrganizeEntity>
+    public interface IOrganizeRepository : IRepositoryBase<Organize>
     {
     }
 }

@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class RoleAuthorizeMap : EntityTypeConfiguration<RoleAuthorizeEntity>
+    public class RoleAuthorizeMap : EntityTypeConfiguration<RoleAuthorize>
     {
         public RoleAuthorizeMap()
         {

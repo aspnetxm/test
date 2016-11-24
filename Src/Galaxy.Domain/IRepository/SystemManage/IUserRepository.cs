@@ -4,14 +4,14 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IUserRepository : IRepositoryBase<UserEntity>
+    public interface IUserRepository : IRepositoryBase<User>
     {
         void Delete(string keyValue);
-        void Update(UserEntity userEntity, UserLogOnEntity userLogOnEntity);
-        void Insert(UserEntity userEntity, UserLogOnEntity userLogOnEntity);
+        void Update(User userEntity, UserLogOn userLogOnEntity);
+        void Insert(User userEntity, UserLogOn userLogOnEntity);
     }
 }

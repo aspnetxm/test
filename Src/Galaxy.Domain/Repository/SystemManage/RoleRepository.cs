@@ -11,18 +11,18 @@ using System.Collections.Generic;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class RoleRepository : RepositoryBase<RoleEntity>, IRoleRepository
+    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
     {
         public void DeleteForm(string keyValue)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {
-                db.Delete<RoleEntity>(t => t.Id == keyValue);
-                db.Delete<RoleAuthorizeEntity>(t => t.ObjectId == keyValue);
+                db.Delete<Role>(t => t.Id == keyValue);
+                db.Delete<RoleAuthorize>(t => t.ObjectId == keyValue);
                 db.Commit();
             }
         }
-        public void SubmitForm(RoleEntity roleEntity, List<RoleAuthorizeEntity> roleAuthorizeEntitys, string keyValue)
+        public void SubmitForm(Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue)
         {
             using (var db = new RepositoryBase().BeginTrans())
             {
@@ -35,7 +35,7 @@ namespace Galaxy.Repository.SystemManage
                     roleEntity.Category = 1;
                     db.Insert(roleEntity);
                 }
-                db.Delete<RoleAuthorizeEntity>(t => t.ObjectId == roleEntity.Id);
+                db.Delete<RoleAuthorize>(t => t.ObjectId == roleEntity.Id);
                 db.Insert(roleAuthorizeEntitys);
                 db.Commit();
             }

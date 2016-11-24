@@ -16,11 +16,11 @@ namespace Galaxy.Application.SystemManage
     {
         private IOrganizeRepository service = new OrganizeRepository();
 
-        public List<OrganizeEntity> GetList()
+        public List<Organize> GetList()
         {
             return service.IQueryable().OrderBy(t => t.CreatorTime).ToList();
         }
-        public OrganizeEntity GetForm(string keyValue)
+        public Organize GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -35,7 +35,7 @@ namespace Galaxy.Application.SystemManage
                 service.Delete(t => t.Id == keyValue);
             }
         }
-        public void SubmitForm(OrganizeEntity organizeEntity, string keyValue,string userId)
+        public void SubmitForm(Organize organizeEntity, string keyValue,string userId)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {

@@ -16,9 +16,9 @@ namespace Galaxy.Application.SystemManage
     {
         private IRoleRepository service = new RoleRepository();
 
-        public List<RoleEntity> GetList(string keyword = "")
+        public List<Role> GetList(string keyword = "")
         {
-            var expression = LinqExt.True<RoleEntity>();
+            var expression = LinqExt.True<Role>();
             if (!string.IsNullOrEmpty(keyword))
             {
                 expression = expression.And(t => t.FullName.Contains(keyword));
@@ -27,7 +27,7 @@ namespace Galaxy.Application.SystemManage
             expression = expression.And(t => t.Category == 2);
             return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
-        public RoleEntity GetForm(string keyValue)
+        public Role GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -35,7 +35,7 @@ namespace Galaxy.Application.SystemManage
         {
             service.Delete(t => t.Id == keyValue);
         }
-        public void SubmitForm(RoleEntity roleEntity, string keyValue)
+        public void SubmitForm(Role roleEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {

@@ -22,7 +22,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = itemsApp.GetList();
             var treeList = new List<TreeSelectModel>();
-            foreach (ItemsEntity item in data)
+            foreach (Items item in data)
             {
                 TreeSelectModel treeModel = new TreeSelectModel();
                 treeModel.id = item.Id;
@@ -38,7 +38,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = itemsApp.GetList();
             var treeList = new List<TreeViewModel>();
-            foreach (ItemsEntity item in data)
+            foreach (Items item in data)
             {
                 TreeViewModel tree = new TreeViewModel();
                 bool hasChildren = data.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -59,7 +59,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = itemsApp.GetList();
             var treeList = new List<TreeGridModel>();
-            foreach (ItemsEntity item in data)
+            foreach (Items item in data)
             {
                 TreeGridModel treeModel = new TreeGridModel();
                 bool hasChildren = data.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -82,7 +82,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(ItemsEntity itemsEntity, string keyValue)
+        public ActionResult SubmitForm(Items itemsEntity, string keyValue)
         {
             itemsApp.SubmitForm(itemsEntity, keyValue);
             return Success("操作成功。");

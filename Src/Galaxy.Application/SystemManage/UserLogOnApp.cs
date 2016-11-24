@@ -14,17 +14,17 @@ namespace Galaxy.Application.SystemManage
     {
         private IUserLogOnRepository service = new UserLogOnRepository();
 
-        public UserLogOnEntity GetForm(string keyValue)
+        public UserLogOn GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
-        public void UpdateForm(UserLogOnEntity userLogOnEntity)
+        public void UpdateForm(UserLogOn userLogOnEntity)
         {
             service.Update(userLogOnEntity);
         }
         public void RevisePassword(string userPassword,string keyValue)
         {
-            UserLogOnEntity userLogOnEntity = new UserLogOnEntity();
+            UserLogOn userLogOnEntity = new UserLogOn();
             userLogOnEntity.Id = keyValue;
             userLogOnEntity.UserSecretkey = Md5Encrypt.Md5(Common.CreateNo(), 16).ToLower();
             userLogOnEntity.UserPassword = Md5Encrypt.Md5(AES.Encrypt(Md5Encrypt.Md5(userPassword, 32).ToLower(), userLogOnEntity.UserSecretkey).ToLower(), 32).ToLower();

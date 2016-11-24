@@ -4,7 +4,7 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ using System.Text;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class ItemsDetailRepository : RepositoryBase<ItemsDetailEntity>, IItemsDetailRepository
+    public class ItemsDetailRepository : RepositoryBase<ItemsDetail>, IItemsDetailRepository
     {
-        public List<ItemsDetailEntity> GetItemList(string enCode)
+        public List<ItemsDetail> GetItemList(string enCode)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append(@"SELECT  d.*

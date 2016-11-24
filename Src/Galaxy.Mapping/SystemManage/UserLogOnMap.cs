@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class UserLogOnMap : EntityTypeConfiguration<UserLogOnEntity>
+    public class UserLogOnMap : EntityTypeConfiguration<UserLogOn>
     {
         public UserLogOnMap()
         {

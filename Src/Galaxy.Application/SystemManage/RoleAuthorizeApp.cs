@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Galaxy.Code;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Dto;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Domain.ViewModel;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Application.SystemManage
@@ -20,13 +20,13 @@ namespace Galaxy.Application.SystemManage
         private ModuleApp moduleApp = new ModuleApp();
         private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
 
-        public List<RoleAuthorizeEntity> GetList(string ObjectId)
+        public List<RoleAuthorize> GetList(string ObjectId)
         {
             return service.IQueryable(t => t.ObjectId == ObjectId).ToList();
         }
-        public List<ModuleEntity> GetMenuList(string roleId)
+        public List<Module> GetMenuList(string roleId)
         {
-            var data = new List<ModuleEntity>();
+            var data = new List<Module>();
             if (OperatorProvider.Provider.GetCurrent().IsSystem)
             {
                 data = moduleApp.GetList();
@@ -37,7 +37,7 @@ namespace Galaxy.Application.SystemManage
                 var authorizedata = service.IQueryable(t => t.ObjectId == roleId && t.ItemType == 1).ToList();
                 foreach (var item in authorizedata)
                 {
-                    ModuleEntity moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
+                    Module moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
                     if (moduleEntity != null)
                     {
                         data.Add(moduleEntity);
@@ -46,9 +46,9 @@ namespace Galaxy.Application.SystemManage
             }
             return data.OrderBy(t => t.SortCode).ToList();
         }
-        public List<ModuleButtonEntity> GetButtonList(string roleId)
+        public List<ModuleButton> GetButtonList(string roleId)
         {
-            var data = new List<ModuleButtonEntity>();
+            var data = new List<ModuleButton>();
             if (OperatorProvider.Provider.GetCurrent().IsSystem)
             {
                 data = moduleButtonApp.GetList();
@@ -59,7 +59,7 @@ namespace Galaxy.Application.SystemManage
                 var authorizedata = service.IQueryable(t => t.ObjectId == roleId && t.ItemType == 2).ToList();
                 foreach (var item in authorizedata)
                 {
-                    ModuleButtonEntity moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
+                    ModuleButton moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
                     if (moduleButtonEntity != null)
                     {
                         data.Add(moduleButtonEntity);
@@ -81,12 +81,12 @@ namespace Galaxy.Application.SystemManage
                 {
                     if (item.ItemType == 1)
                     {
-                        ModuleEntity moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
+                        Module moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
                         authorizeurldata.Add(new AuthorizeActionModel { Id = moduleEntity.Id, UrlAddress = moduleEntity.UrlAddress });
                     }
                     else if (item.ItemType == 2)
                     {
-                        ModuleButtonEntity moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
+                        ModuleButton moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
                         authorizeurldata.Add(new AuthorizeActionModel { Id = moduleButtonEntity.ModuleId, UrlAddress = moduleButtonEntity.UrlAddress });
                     }
                 }

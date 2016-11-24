@@ -10,7 +10,7 @@ using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class UserLogOnRepository : RepositoryBase<UserLogOnEntity>, IUserLogOnRepository
+    public class UserLogOnRepository : RepositoryBase<UserLogOn>, IUserLogOnRepository
     {
 
     }

@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class OrganizeMap : EntityTypeConfiguration<OrganizeEntity>
+    public class OrganizeMap : EntityTypeConfiguration<Organize>
     {
         public OrganizeMap()
         {

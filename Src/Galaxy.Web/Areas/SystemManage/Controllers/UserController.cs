@@ -42,7 +42,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(UserEntity userEntity, UserLogOnEntity userLogOnEntity, string keyValue)
+        public ActionResult SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
         {
             userApp.SubmitForm(userEntity, userLogOnEntity, keyValue);
             return Success("操作成功。");
@@ -76,7 +76,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DisabledAccount(string keyValue)
         {
-            UserEntity userEntity = new UserEntity();
+            User userEntity = new User();
             userEntity.Id = keyValue;
             userEntity.EnabledMark = false;
             userApp.UpdateForm(userEntity);
@@ -88,7 +88,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EnabledAccount(string keyValue)
         {
-            UserEntity userEntity = new UserEntity();
+            User userEntity = new User();
             userEntity.Id = keyValue;
             userEntity.EnabledMark = true;
             userApp.UpdateForm(userEntity);

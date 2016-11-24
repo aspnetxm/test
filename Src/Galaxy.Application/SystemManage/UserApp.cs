@@ -18,9 +18,9 @@ namespace Galaxy.Application.SystemManage
         private IUserRepository service = new UserRepository();
         private UserLogOnApp userLogOnApp = new UserLogOnApp();
 
-        public List<UserEntity> GetList(Pagination pagination, string keyword)
+        public List<User> GetList(Pagination pagination, string keyword)
         {
-            var expression = LinqExt.True<UserEntity>();
+            var expression = LinqExt.True<User>();
             if (!string.IsNullOrEmpty(keyword))
             {
                 expression = expression.And(t => t.Account.Contains(keyword));
@@ -30,7 +30,7 @@ namespace Galaxy.Application.SystemManage
             expression = expression.And(t => t.Account != "admin");
             return service.FindList(expression, pagination);
         }
-        public UserEntity GetForm(string keyValue)
+        public User GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -40,7 +40,7 @@ namespace Galaxy.Application.SystemManage
             service.Delete(keyValue);
         }
 
-        public void SubmitForm(UserEntity userEntity, UserLogOnEntity userLogOnEntity, string keyValue)
+        public void SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
@@ -54,7 +54,7 @@ namespace Galaxy.Application.SystemManage
             }
         }
 
-        public void UpdateForm(UserEntity userEntity)
+        public void UpdateForm(User userEntity)
         {
             service.Update(userEntity);
         }
@@ -65,9 +65,9 @@ namespace Galaxy.Application.SystemManage
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public UserEntity Login(string username, string password)
+        public User Login(string username, string password)
         {
-            UserEntity userEntity = service.FindEntity(t => t.Account == username);
+            User userEntity = service.FindEntity(t => t.Account == username);
             if (userEntity == null)
             {
                 throw new Exception("账户不存在，请重新输入");
@@ -78,7 +78,7 @@ namespace Galaxy.Application.SystemManage
                 throw new Exception("账户被系统锁定,请联系管理员");
             }
 
-            UserLogOnEntity userLogOnEntity = userLogOnApp.GetForm(userEntity.Id);
+            UserLogOn userLogOnEntity = userLogOnApp.GetForm(userEntity.Id);
             string dbPassword = Md5Encrypt.Md5(AES.Encrypt(password.ToLower(), userLogOnEntity.UserSecretkey).ToLower(), 32).ToLower();
             if (dbPassword != userLogOnEntity.UserPassword)
             {

@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class RoleMap : EntityTypeConfiguration<RoleEntity>
+    public class RoleMap : EntityTypeConfiguration<Role>
     {
         public RoleMap()
         {

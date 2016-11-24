@@ -4,13 +4,13 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Data;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.IRepository.SystemManage
 {
-    public interface IModuleButtonRepository : IRepositoryBase<ModuleButtonEntity>
+    public interface IModuleButtonRepository : IRepositoryBase<ModuleButton>
     {
-        void SubmitCloneButton(List<ModuleButtonEntity> entitys);
+        void SubmitCloneButton(List<ModuleButton> entitys);
     }
 }

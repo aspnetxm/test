@@ -18,9 +18,9 @@ namespace Galaxy.Application.SystemManage
         private ModuleApp moduleApp = new ModuleApp();
         private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
 
-        public List<RoleEntity> GetList(string keyword = "")
+        public List<Role> GetList(string keyword = "")
         {
-            var expression = LinqExt.True<RoleEntity>();
+            var expression = LinqExt.True<Role>();
             if (!string.IsNullOrEmpty(keyword))
             {
                 expression = expression.And(t => t.FullName.Contains(keyword));
@@ -29,7 +29,7 @@ namespace Galaxy.Application.SystemManage
             expression = expression.And(t => t.Category == 1);
             return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
-        public RoleEntity GetForm(string keyValue)
+        public Role GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -37,7 +37,7 @@ namespace Galaxy.Application.SystemManage
         {
             service.DeleteForm(keyValue);
         }
-        public void SubmitForm(RoleEntity roleEntity, string[] permissionIds, string keyValue)
+        public void SubmitForm(Role roleEntity, string[] permissionIds, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
@@ -49,10 +49,10 @@ namespace Galaxy.Application.SystemManage
             }
             var moduledata = moduleApp.GetList();
             var buttondata = moduleButtonApp.GetList();
-            List<RoleAuthorizeEntity> roleAuthorizeEntitys = new List<RoleAuthorizeEntity>();
+            List<RoleAuthorize> roleAuthorizeEntitys = new List<RoleAuthorize>();
             foreach (var itemId in permissionIds)
             {
-                RoleAuthorizeEntity roleAuthorizeEntity = new RoleAuthorizeEntity();
+                RoleAuthorize roleAuthorizeEntity = new RoleAuthorize();
                 roleAuthorizeEntity.Id = Common.GuId();
                 roleAuthorizeEntity.ObjectType = 1;
                 roleAuthorizeEntity.ObjectId = roleEntity.Id;

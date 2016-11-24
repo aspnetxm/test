@@ -17,11 +17,11 @@ namespace Galaxy.Application.SystemManage
     {
         private IModuleRepository service = new ModuleRepository();
 
-        public List<ModuleEntity> GetList()
+        public List<Module> GetList()
         {
             return service.IQueryable().OrderBy(t => t.SortCode).ToList();
         }
-        public ModuleEntity GetForm(string keyValue)
+        public Module GetForm(string keyValue)
         {
             return service.FindEntity(keyValue);
         }
@@ -36,7 +36,7 @@ namespace Galaxy.Application.SystemManage
                 service.Delete(t => t.Id == keyValue);
             }
         }
-        public void SubmitForm(ModuleEntity moduleEntity, string keyValue)
+        public void SubmitForm(Module moduleEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {

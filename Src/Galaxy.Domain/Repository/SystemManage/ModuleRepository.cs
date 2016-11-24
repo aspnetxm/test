@@ -9,7 +9,7 @@ using Galaxy.Domain.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class ModuleRepository : RepositoryBase<ModuleEntity>, IModuleRepository
+    public class ModuleRepository : RepositoryBase<Module>, IModuleRepository
     {
     }
 }

@@ -59,15 +59,15 @@ namespace Galaxy.Data
             entitys.ForEach(m => dbcontext.Entry<TEntity>(m).State = EntityState.Deleted);
             return dbcontext.SaveChanges();
         }
-        public TEntity FindEntity(object keyValue)
+        public TEntity Get(object keyValue)
         {
             return dbcontext.Set<TEntity>().Find(keyValue);
         }
-        public TEntity FindEntity(Expression<Func<TEntity, bool>> predicate)
+        public TEntity Get(Expression<Func<TEntity, bool>> predicate)
         {
             return dbcontext.Set<TEntity>().FirstOrDefault(predicate);
         }
-        public async Task<TEntity> FindEntityAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await dbcontext.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }

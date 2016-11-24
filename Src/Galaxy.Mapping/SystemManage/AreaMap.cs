@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
 {
-    public class AreaMap : EntityTypeConfiguration<AreaEntity>
+    public class AreaMap : EntityTypeConfiguration<Area>
     {
         public AreaMap()
         {

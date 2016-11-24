@@ -22,13 +22,13 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var moduledata = moduleApp.GetList();
             var buttondata = moduleButtonApp.GetList();
-            var authorizedata = new List<RoleAuthorizeEntity>();
+            var authorizedata = new List<RoleAuthorize>();
             if (!string.IsNullOrEmpty(roleId))
             {
                 authorizedata = roleAuthorizeApp.GetList(roleId);
             }
             var treeList = new List<TreeViewModel>();
-            foreach (ModuleEntity item in moduledata)
+            foreach (Module item in moduledata)
             {
                 TreeViewModel tree = new TreeViewModel();
                 bool hasChildren = moduledata.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -44,7 +44,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
                 tree.img = item.Icon == "" ? "" : item.Icon;
                 treeList.Add(tree);
             }
-            foreach (ModuleButtonEntity item in buttondata)
+            foreach (ModuleButton item in buttondata)
             {
                 TreeViewModel tree = new TreeViewModel();
                 bool hasChildren = buttondata.Count(t => t.ParentId == item.Id) == 0 ? false : true;

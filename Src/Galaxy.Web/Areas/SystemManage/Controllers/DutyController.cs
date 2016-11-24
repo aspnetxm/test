@@ -33,7 +33,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(RoleEntity roleEntity, string keyValue)
+        public ActionResult SubmitForm(Role roleEntity, string keyValue)
         {
             dutyApp.SubmitForm(roleEntity, keyValue);
             return Success("操作成功。");
