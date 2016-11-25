@@ -70,8 +70,8 @@ namespace Galaxy.Application.SystemManage
         }
         public bool ActionValidate(string roleId, string moduleId, string action)
         {
-            var authorizeurldata = new List<AuthorizeActionModel>();
-            var cachedata = CacheFactory.Cache().Get<List<AuthorizeActionModel>>("authorizeurldata_" + roleId);
+            var authorizeurldata = new List<AuthorizeAction>();
+            var cachedata = CacheFactory.Cache().Get<List<AuthorizeAction>>("authorizeurldata_" + roleId);
             if (cachedata == null)
             {
                 var moduledata = moduleApp.GetList();
@@ -82,12 +82,12 @@ namespace Galaxy.Application.SystemManage
                     if (item.ItemType == 1)
                     {
                         Module moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
-                        authorizeurldata.Add(new AuthorizeActionModel { Id = moduleEntity.Id, UrlAddress = moduleEntity.UrlAddress });
+                        authorizeurldata.Add(new AuthorizeAction { Id = moduleEntity.Id, UrlAddress = moduleEntity.UrlAddress });
                     }
                     else if (item.ItemType == 2)
                     {
                         ModuleButton moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
-                        authorizeurldata.Add(new AuthorizeActionModel { Id = moduleButtonEntity.ModuleId, UrlAddress = moduleButtonEntity.UrlAddress });
+                        authorizeurldata.Add(new AuthorizeAction { Id = moduleButtonEntity.ModuleId, UrlAddress = moduleButtonEntity.UrlAddress });
                     }
                 }
                 CacheFactory.Cache().Set("authorizeurldata_" + roleId, authorizeurldata, 5);

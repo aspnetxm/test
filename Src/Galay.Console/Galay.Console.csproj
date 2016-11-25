@@ -62,9 +62,9 @@
       <Project>{567bbddf-31a1-46f8-a1fe-2fa918a8f14c}</Project>
       <Name>Galaxy.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Domain\Galaxy.Domain.Repository.csproj">
+    <ProjectReference Include="..\Galaxy.Domain\Galaxy.Repository.csproj">
       <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
-      <Name>Galaxy.Domain.Repository</Name>
+      <Name>Galaxy.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.Entity\Galaxy.Domain.csproj">
       <Project>{2037457d-3243-4e01-985a-9d236f693870}</Project>

@@ -8,15 +8,12 @@ using Galaxy.Domain.Infrastructure;
 
 namespace Galaxy.Domain.Entity.SystemSecurity
 {
-    public class DbBackup : ICreationAudited, IDeleteAudited, IModificationAudited
+    public class FilterIP : IEntity<FilterIP>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string Id { get; set; }
-        public string BackupType { get; set; }
-        public string DbName { get; set; }
-        public string FileName { get; set; }
-        public string FileSize { get; set; }
-        public string FilePath { get; set; }
-        public DateTime? BackupTime { get; set; }
+        public bool? Type { get; set; }
+        public string StartIP { get; set; }
+        public string EndIP { get; set; }
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }

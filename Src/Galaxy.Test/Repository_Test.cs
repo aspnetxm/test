@@ -5,7 +5,7 @@ using System.Threading;
 using Xunit;
 
 using Galaxy.Repository.SystemManage;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Data;
 
 namespace Galaxy.Test

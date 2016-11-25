@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 using Galaxy.Repository.SystemManage;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Data;
 
 

@@ -4,7 +4,7 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
 
@@ -16,7 +16,7 @@ namespace Galaxy.Application.SystemManage
 
         public UserLogOn GetForm(string keyValue)
         {
-            return service.FindEntity(keyValue);
+            return service.Get(keyValue);
         }
         public void UpdateForm(UserLogOn userLogOnEntity)
         {

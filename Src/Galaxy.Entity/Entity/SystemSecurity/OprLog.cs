@@ -11,7 +11,7 @@ namespace Galaxy.Domain.Entity.SystemSecurity
     /// <summary>
     /// 日志
     /// </summary>
-    public class Log : IEntity<Log>, ICreationAudited
+    public class OprLog : IEntity<OprLog>, ICreationAudited
     {
         public string Id { get; set; }
         public DateTime? Date { get; set; }

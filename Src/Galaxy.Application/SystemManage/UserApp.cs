@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Galaxy.Code;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
 using Galaxy.Data;
@@ -32,7 +32,7 @@ namespace Galaxy.Application.SystemManage
         }
         public User GetForm(string keyValue)
         {
-            return service.FindEntity(keyValue);
+            return service.Get(keyValue);
         }
 
         public void DeleteForm(string keyValue)
@@ -67,7 +67,7 @@ namespace Galaxy.Application.SystemManage
         /// <returns></returns>
         public User Login(string username, string password)
         {
-            User userEntity = service.FindEntity(t => t.Account == username);
+            User userEntity = service.Get(t => t.Account == username);
             if (userEntity == null)
             {
                 throw new Exception("账户不存在，请重新输入");

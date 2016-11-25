@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Galaxy.Data;
 using Galaxy.Code;
-using Galaxy.IRepository.SystemManage;
+using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Application.Interfaces.SystemManage;
 using Galaxy.Domain.Dto;
 using Galaxy.Domain.Entity.SystemManage;
@@ -57,6 +58,49 @@ namespace Galaxy.Application.SystemManage
             _logOnRepository.Update(userLogOnEntity);
             result.User = user;
             return result;
+        }
+
+
+        public Task< List<User>> GetList(Pagination pagination, string keyword)
+        {
+            var expression = LinqExt.True<User>();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                expression = expression.And(t => t.Account.Contains(keyword));
+                expression = expression.Or(t => t.RealName.Contains(keyword));
+                expression = expression.Or(t => t.MobilePhone.Contains(keyword));
+            }
+            expression = expression.And(t => t.Account != "admin");
+            return _userRepository.FindList(expression, pagination);
+        }
+
+        public User GetForm(string keyValue)
+        {
+            return _userRepository.Get(keyValue);
+        }
+
+        public void DeleteForm(string keyValue)
+        {
+            _userRepository.Delete(keyValue);
+        }
+
+        public void SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
+        {
+            if (!string.IsNullOrEmpty(keyValue))
+            {
+                userEntity.Modify(keyValue);
+                _userRepository.Update(userEntity);
+            }
+            else
+            {
+                userEntity.Create();
+                _userRepository.Insert(userEntity);
+            }
+        }
+
+        public void UpdateForm(User userEntity)
+        {
+            _userRepository.Update(userEntity);
         }
     }
 }

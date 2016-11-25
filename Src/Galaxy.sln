@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Data", "Galaxy.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Mapping", "Galaxy.Mapping\Galaxy.Mapping.csproj", "{F70F96EA-F8FB-4834-BB51-170BC9661DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Domain.Repository", "Galaxy.Domain\Galaxy.Domain.Repository.csproj", "{83C1C280-99A4-417C-BE22-BCDD1C0BA732}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Repository", "Galaxy.Domain\Galaxy.Repository.csproj", "{83C1C280-99A4-417C-BE22-BCDD1C0BA732}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Domain", "Galaxy.Entity\Galaxy.Domain.csproj", "{2037457D-3243-4E01-985A-9D236F693870}"
 EndProject

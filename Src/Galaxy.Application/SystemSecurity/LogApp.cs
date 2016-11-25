@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Galaxy.Code;
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 using Galaxy.Domain.IRepository.SystemSecurity;
 using Galaxy.Repository.SystemSecurity;
 using Galaxy.Data;
@@ -18,9 +18,9 @@ namespace Galaxy.Application.SystemSecurity
     {
         private ILogRepository service = new LogRepository();
 
-        public List<LogEntity> GetList(Pagination pagination, string queryJson)
+        public List<OprLog> GetList(Pagination pagination, string queryJson)
         {
-            var expression = LinqExt.True<LogEntity>();
+            var expression = LinqExt.True<OprLog>();
             var queryParam = queryJson.ToObject();
             if (!queryParam["keyword"].IsEmpty())
             {
@@ -67,14 +67,14 @@ namespace Galaxy.Application.SystemSecurity
             {
                 operateTime = DateTime.Now.AddMonths(-3);
             }
-            var expression = LinqExt.True<LogEntity>();
+            var expression = LinqExt.True<OprLog>();
             expression = expression.And(t => t.Date <= operateTime);
             service.Delete(expression);
         }
 
         public void WriteLog(bool result, string resultLog, string ip)
         {
-            LogEntity logEntity = new LogEntity();
+            OprLog logEntity = new OprLog();
             logEntity.Id = Common.GuId();
             logEntity.Date = DateTime.Now;
             logEntity.Account = OperatorProvider.Provider.GetCurrent().UserCode;
@@ -87,7 +87,7 @@ namespace Galaxy.Application.SystemSecurity
             service.Insert(logEntity);
         }
 
-        public void WriteLog(LogEntity logEntity)
+        public void WriteLog(OprLog logEntity)
         {
             logEntity.Id = Common.GuId();
             logEntity.Date = DateTime.Now;

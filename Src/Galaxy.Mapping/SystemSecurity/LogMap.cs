@@ -3,16 +3,16 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemSecurity
 {
-    public class LogMap : EntityTypeConfiguration<LogEntity>
+    public class OprLogMap : EntityTypeConfiguration<OprLog>
     {
-        public LogMap()
+        public OprLogMap()
         {
-            this.ToTable("Sys_Log");
+            this.ToTable("Sys_OprLog");
             this.HasKey(t => t.Id);
         }
     }

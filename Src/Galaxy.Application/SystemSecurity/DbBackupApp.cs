@@ -1,10 +1,10 @@
 ﻿/*******************************************************************************
- * 作者：星星    
+ * 作者：星星    Galaxy.Domain.Entity.SystemManage;
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 using Galaxy.Domain.IRepository.SystemSecurity;
 using Galaxy.Repository.SystemSecurity;
 using System;
@@ -17,9 +17,9 @@ namespace Galaxy.Application.SystemSecurity
     {
         private IDbBackupRepository service = new DbBackupRepository();
 
-        public List<DbBackupEntity> GetList(string queryJson)
+        public List<DbBackup> GetList(string queryJson)
         {
-            var expression = LinqExt.True<DbBackupEntity>();
+            var expression = LinqExt.True<DbBackup>();
             var queryParam = queryJson.ToObject();
             if (!queryParam["condition"].IsEmpty() && !queryParam["keyword"].IsEmpty())
             {
@@ -38,15 +38,15 @@ namespace Galaxy.Application.SystemSecurity
             return service.IQueryable(expression).OrderByDescending(t => t.BackupTime).ToList();
         }
 
-        public DbBackupEntity GetForm(string keyValue)
+        public DbBackup GetForm(string keyValue)
         {
-            return service.FindEntity(keyValue);
+            return service.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
             service.DeleteForm(keyValue);
         }
-        public void SubmitForm(DbBackupEntity dbBackupEntity)
+        public void SubmitForm(DbBackup dbBackupEntity)
         {
             dbBackupEntity.Id = Common.GuId();
             dbBackupEntity.EnabledMark = true;

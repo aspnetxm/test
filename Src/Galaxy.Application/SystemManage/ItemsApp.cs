@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
 using System;
@@ -22,7 +22,7 @@ namespace Galaxy.Application.SystemManage
         }
         public Items GetForm(string keyValue)
         {
-            return service.FindEntity(keyValue);
+            return service.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {

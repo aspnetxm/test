@@ -40,33 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository\SystemManage\IAreaRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IItemsDetailRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IItemsRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IModuleButtonRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IModuleRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IOrganizeRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IRoleAuthorizeRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IRoleRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IUserLogOnRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IUserRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\IDbBackupRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\IFilterIPRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\ILogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\SystemManage\AreaRepository.cs" />
-    <Compile Include="Repository\SystemManage\ItemsDetailRepository.cs" />
-    <Compile Include="Repository\SystemManage\ItemsRepository.cs" />
-    <Compile Include="Repository\SystemManage\ModuleButtonRepository.cs" />
-    <Compile Include="Repository\SystemManage\ModuleRepository.cs" />
-    <Compile Include="Repository\SystemManage\OrganizeRepository.cs" />
-    <Compile Include="Repository\SystemManage\RoleAuthorizeRepository.cs" />
-    <Compile Include="Repository\SystemManage\RoleRepository.cs" />
-    <Compile Include="Repository\SystemManage\UserLogOnRepository.cs" />
-    <Compile Include="Repository\SystemManage\UserRepository.cs" />
-    <Compile Include="Repository\SystemSecurity\DbBackupRepository.cs" />
-    <Compile Include="Repository\SystemSecurity\FilterIPRepository.cs" />
-    <Compile Include="Repository\SystemSecurity\LogRepository.cs" />
+    <Compile Include="SystemManage\AreaRepository.cs" />
+    <Compile Include="SystemManage\ItemsDetailRepository.cs" />
+    <Compile Include="SystemManage\ItemsRepository.cs" />
+    <Compile Include="SystemManage\ModuleButtonRepository.cs" />
+    <Compile Include="SystemManage\ModuleRepository.cs" />
+    <Compile Include="SystemManage\OrganizeRepository.cs" />
+    <Compile Include="SystemManage\RoleAuthorizeRepository.cs" />
+    <Compile Include="SystemManage\RoleRepository.cs" />
+    <Compile Include="SystemManage\UserLogOnRepository.cs" />
+    <Compile Include="SystemManage\UserRepository.cs" />
+    <Compile Include="SystemSecurity\DbBackupRepository.cs" />
+    <Compile Include="SystemSecurity\FilterIPRepository.cs" />
+    <Compile Include="SystemSecurity\LogRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Galaxy.Code\Galaxy.Code.csproj">

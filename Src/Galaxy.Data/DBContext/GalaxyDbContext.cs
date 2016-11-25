@@ -3,6 +3,7 @@
  * 描述：   
  * 修改记录： 
 *********************************************************************************/
+
 using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
@@ -11,8 +12,10 @@ using System.Reflection;
 
 namespace Galaxy.Data
 {
-    public class GalaxyDbContext : DbContext
+    public class GalaxyDbContext : DbContext, IDbContext
     {
+
+        
         public GalaxyDbContext()
             : base("GalaxyDbContext")
         {

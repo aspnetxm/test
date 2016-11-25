@@ -3,12 +3,12 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Entity.SystemSecurity;
+using Galaxy.Domain.Entity.SystemSecurity;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemSecurity
 {
-    public class FilterIPMap : EntityTypeConfiguration<FilterIPEntity>
+    public class FilterIPMap : EntityTypeConfiguration<FilterIP>
     {
         public FilterIPMap()
         {

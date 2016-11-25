@@ -5,7 +5,7 @@
 *********************************************************************************/
 using Galaxy.Application.SystemManage;
 using Galaxy.Code;
-using Galaxy.Entity.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -22,7 +22,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = areaApp.GetList();
             var treeList = new List<TreeSelectModel>();
-            foreach (AreaEntity item in data)
+            foreach (Area item in data)
             {
                 TreeSelectModel treeModel = new TreeSelectModel();
                 treeModel.id = item.Id;
@@ -38,7 +38,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = areaApp.GetList();
             var treeList = new List<TreeGridModel>();
-            foreach (AreaEntity item in data)
+            foreach (Area item in data)
             {
                 TreeGridModel treeModel = new TreeGridModel();
                 bool hasChildren = data.Count(t => t.ParentId == item.Id) == 0 ? false : true;
@@ -66,7 +66,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HttpPost]
         [HandlerAjaxOnly]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitForm(AreaEntity areaEntity, string keyValue)
+        public ActionResult SubmitForm(Area areaEntity, string keyValue)
         {
             areaApp.SubmitForm(areaEntity, keyValue);
             return Success("操作成功。");
