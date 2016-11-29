@@ -3,24 +3,26 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Galaxy.Application.SystemManage
-{
-    public class ItemsApp
-    {
-        private IItemsRepository service = new ItemsRepository();
+using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.SystemManage;
 
-        public List<Items> GetList()
+
+namespace Galaxy.Service.SystemManage
+{
+    public class AreaApp
+    {
+        private IAreaRepository service = new AreaRepository();
+
+        public List<Area> GetList()
         {
             return service.IQueryable().ToList();
         }
-        public Items GetForm(string keyValue)
+        public Area GetForm(string keyValue)
         {
             return service.Get(keyValue);
         }
@@ -35,17 +37,17 @@ namespace Galaxy.Application.SystemManage
                 service.Delete(t => t.Id == keyValue);
             }
         }
-        public void SubmitForm(Items itemsEntity, string keyValue)
+        public void SubmitForm(Area areaEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
-                itemsEntity.Modify(keyValue);
-                service.Update(itemsEntity);
+                areaEntity.Modify(keyValue);
+                service.Update(areaEntity);
             }
             else
             {
-                itemsEntity.Create();
-                service.Insert(itemsEntity);
+                areaEntity.Create();
+                service.Insert(areaEntity);
             }
         }
     }

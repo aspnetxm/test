@@ -7,7 +7,7 @@ using Galaxy.Domain.Dto;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Data;
 
-namespace Galaxy.Application.Interfaces.SystemManage
+namespace Galaxy.Service.Interfaces
 {
     public interface IUserService
     {
@@ -32,13 +32,13 @@ namespace Galaxy.Application.Interfaces.SystemManage
         /// </summary>
         /// <param name="keyValue"></param>
         /// <returns></returns>
-        Task<User> Get(string keyValue);
+        Task<User> GetById(string keyValue);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="keyValue"></param>
-        Task DeleteForm(string keyValue);
+        Task DeleteById(string keyValue);
 
         /// <summary>
         /// 添加或更新

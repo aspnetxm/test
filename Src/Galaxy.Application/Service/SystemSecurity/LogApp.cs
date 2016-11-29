@@ -12,7 +12,7 @@ using Galaxy.Repository.SystemSecurity;
 using Galaxy.Data;
 
 
-namespace Galaxy.Application.SystemSecurity
+namespace Galaxy.Service.SystemSecurity
 {
     public class LogApp
     {

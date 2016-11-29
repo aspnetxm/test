@@ -12,7 +12,7 @@ using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Repository.SystemManage;
 
-namespace Galaxy.Application.SystemManage
+namespace Galaxy.Service.SystemManage
 {
     public class RoleAuthorizeApp
     {

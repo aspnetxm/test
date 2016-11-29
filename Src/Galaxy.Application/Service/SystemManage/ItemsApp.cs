@@ -10,17 +10,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Galaxy.Application.SystemManage
+namespace Galaxy.Service.SystemManage
 {
-    public class OrganizeApp
+    public class ItemsApp
     {
-        private IOrganizeRepository service = new OrganizeRepository();
+        private IItemsRepository service = new ItemsRepository();
 
-        public List<Organize> GetList()
+        public List<Items> GetList()
         {
-            return service.IQueryable().OrderBy(t => t.CreatorTime).ToList();
+            return service.IQueryable().ToList();
         }
-        public Organize GetForm(string keyValue)
+        public Items GetForm(string keyValue)
         {
             return service.Get(keyValue);
         }
@@ -35,17 +35,17 @@ namespace Galaxy.Application.SystemManage
                 service.Delete(t => t.Id == keyValue);
             }
         }
-        public void SubmitForm(Organize organizeEntity, string keyValue,string userId)
+        public void SubmitForm(Items itemsEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
-                organizeEntity.Modify(userId);
-                service.Update(organizeEntity);
+                itemsEntity.Modify(keyValue);
+                service.Update(itemsEntity);
             }
             else
             {
-                organizeEntity.Create(userId);
-                service.Insert(organizeEntity);
+                itemsEntity.Create();
+                service.Insert(itemsEntity);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using Galaxy.Application.SystemManage;
+﻿using Galaxy.Service.SystemManage;
 using Galaxy.Code;
 using System.Text;
 using System.Web;

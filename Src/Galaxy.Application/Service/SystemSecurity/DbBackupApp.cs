@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Galaxy.Application.SystemSecurity
+namespace Galaxy.Service.SystemSecurity
 {
     public class DbBackupApp
     {

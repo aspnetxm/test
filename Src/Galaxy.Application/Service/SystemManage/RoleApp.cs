@@ -10,7 +10,7 @@ using Galaxy.Repository.SystemManage;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Galaxy.Application.SystemManage
+namespace Galaxy.Service.SystemManage
 {
     public class RoleApp
     {

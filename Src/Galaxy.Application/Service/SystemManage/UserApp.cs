@@ -18,6 +18,8 @@ namespace Galaxy.Application.SystemManage
         private IUserRepository service = new UserRepository();
         private UserLogOnApp userLogOnApp = new UserLogOnApp();
 
+
+
         public List<User> GetList(Pagination pagination, string keyword)
         {
             var expression = LinqExt.True<User>();

@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Galaxy.Web.Models;
 using Galaxy.Code;
-using Galaxy.Application.Interfaces.SystemManage;
+using Galaxy.Service.Interfaces;
 
 namespace Galaxy.Web.Controllers
 {
@@ -127,7 +127,8 @@ namespace Galaxy.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private string GetRedirectToLocal(string returnUrl) {
+        private string GetRedirectToLocal(string returnUrl)
+        {
             if (Url.IsLocalUrl(returnUrl))
             {
                 return returnUrl;

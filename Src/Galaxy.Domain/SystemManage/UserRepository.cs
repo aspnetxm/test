@@ -32,11 +32,6 @@ namespace Galaxy.Repository.SystemManage
             await _uk.CommitAsync();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userEntity"></param>
-        /// <param name="userLogOnEntity"></param>
         public async Task UpdateAsync(User user, UserLogOn userLogOn)
         {
             _uk.BeginTransaction();
@@ -45,12 +40,12 @@ namespace Galaxy.Repository.SystemManage
             await _uk.CommitAsync();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="userLogOn"></param>
-        /// <returns></returns>
+        public async Task UpdateAsync(User user)
+        {
+            await _uk.UpdateAsync<User>(user);
+            await _uk.CommitAsync();
+        }
+
         public async Task InsertAsync(User user, UserLogOn userLogOn)
         {
             userLogOn.Id = user.Id;
@@ -63,5 +58,6 @@ namespace Galaxy.Repository.SystemManage
             await _uk.InsertAsync<UserLogOn>(userLogOn);
             await _uk.CommitAsync();
         }
+
     }
 }

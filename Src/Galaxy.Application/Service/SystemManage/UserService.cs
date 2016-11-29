@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Galaxy.Data;
 using Galaxy.Code;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Application.Interfaces.SystemManage;
+using Galaxy.Service.Interfaces;
 using Galaxy.Domain.Dto;
 using Galaxy.Domain.Entity.SystemManage;
 
-namespace Galaxy.Application.SystemManage
+namespace Galaxy.Service.SystemManage
 {
     public class UserService : IUserService
     {
@@ -60,8 +58,7 @@ namespace Galaxy.Application.SystemManage
             return result;
         }
 
-
-        public Task< List<User>> GetList(Pagination pagination, string keyword)
+        public async Task<List<User>> GetList(Pagination pagination, string keyword)
         {
             var expression = LinqExt.True<User>();
             if (!string.IsNullOrEmpty(keyword))
@@ -71,36 +68,31 @@ namespace Galaxy.Application.SystemManage
                 expression = expression.Or(t => t.MobilePhone.Contains(keyword));
             }
             expression = expression.And(t => t.Account != "admin");
-            return _userRepository.FindList(expression, pagination);
+            return await _userRepository.FindListAsync(expression, pagination);
         }
 
-        public User GetForm(string keyValue)
+        public async Task<User> GetById(string keyValue)
         {
-            return _userRepository.Get(keyValue);
+            return await _userRepository.GetAsync(keyValue);
         }
 
-        public void DeleteForm(string keyValue)
+        public async Task DeleteById(string keyValue)
         {
-            _userRepository.Delete(keyValue);
+            await _userRepository.DeleteAsync(keyValue);
         }
 
-        public void SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
+        public async Task SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
                 userEntity.Modify(keyValue);
-                _userRepository.Update(userEntity);
             }
             else
             {
                 userEntity.Create();
-                _userRepository.Insert(userEntity);
             }
-        }
+            await _userRepository.UpdateAsync(userEntity, userLogOnEntity);
 
-        public void UpdateForm(User userEntity)
-        {
-            _userRepository.Update(userEntity);
         }
     }
 }

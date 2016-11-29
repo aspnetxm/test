@@ -20,7 +20,7 @@ namespace Galaxy.Web
               .Where(t => t.Name.EndsWith("Repository"))
               .AsImplementedInterfaces().PropertiesAutowired();
 
-            var appServices = Assembly.Load("Galaxy.Application");
+            var appServices = Assembly.Load("Galaxy.Service");
             builder.RegisterAssemblyTypes(appServices, appServices)
               .Where(t => t.Name.EndsWith("Service"))
               .AsImplementedInterfaces().PropertiesAutowired();

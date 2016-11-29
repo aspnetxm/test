@@ -3,21 +3,26 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Application.SystemManage;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Galaxy.Data;
+using Galaxy.Service.Interfaces;
 
 
 namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class UserController : ControllerBase
     {
-        private UserApp userApp = new UserApp();
-        private UserLogOnApp userLogOnApp = new UserLogOnApp();
+        private IUserService _userService;
+       // private UserLogOnApp userLogOnApp = new UserLogOnApp();
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
@@ -25,7 +30,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         {
             var data = new
             {
-                rows = userApp.GetList(pagination, keyword),
+                rows = _userService.GetList(pagination, keyword),
                 total = pagination.total,
                 page = pagination.page,
                 records = pagination.records
@@ -36,7 +41,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = userApp.GetForm(keyValue);
+            var data = _userService.GetById(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -44,7 +49,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue)
         {
-            userApp.SubmitForm(userEntity, userLogOnEntity, keyValue);
+            _userService.SubmitForm(userEntity, userLogOnEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -53,7 +58,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            userApp.DeleteForm(keyValue);
+            _userService.DeleteById(keyValue);
             return Success("删除成功。");
         }
         [HttpGet]
@@ -67,7 +72,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitRevisePassword(string userPassword, string keyValue)
         {
-            userLogOnApp.RevisePassword(userPassword, keyValue);
+            //userLogOnApp.RevisePassword(userPassword, keyValue);
             return Success("重置密码成功。");
         }
         [HttpPost]
@@ -79,7 +84,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
             User userEntity = new User();
             userEntity.Id = keyValue;
             userEntity.EnabledMark = false;
-            userApp.UpdateForm(userEntity);
+            //_userService.UpdateForm(userEntity);
             return Success("账户禁用成功。");
         }
         [HttpPost]
@@ -91,7 +96,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
             User userEntity = new User();
             userEntity.Id = keyValue;
             userEntity.EnabledMark = true;
-            userApp.UpdateForm(userEntity);
+           // _userService.UpdateForm(userEntity);
             return Success("账户启用成功。");
         }
 

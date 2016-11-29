@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Galaxy.Application\Galaxy.Application.csproj">
+    <ProjectReference Include="..\Galaxy.Application\Galaxy.Service.csproj">
       <Project>{975b5b1a-9e54-47c6-8c7c-da109ddcdea7}</Project>
-      <Name>Galaxy.Application</Name>
+      <Name>Galaxy.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.Code\Galaxy.Code.csproj">
       <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>

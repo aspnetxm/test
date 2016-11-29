@@ -14,8 +14,6 @@ namespace Galaxy.Data
 {
     public class GalaxyDbContext : DbContext, IDbContext
     {
-
-        
         public GalaxyDbContext()
             : base("GalaxyDbContext")
         {

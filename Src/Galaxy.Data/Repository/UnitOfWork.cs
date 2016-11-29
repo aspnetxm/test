@@ -28,8 +28,12 @@ namespace Galaxy.Data
             return await _dbContext.Database.ExecuteSqlCommandAsync(sql, parameters);
         }
 
-        public async Task<bool> InsertAsync<TEntity>(TEntity entity)
-            where TEntity : class
+        public int ExecuteSqlCommand(string sql, params object[] parameters)
+        {
+            return _dbContext.Database.ExecuteSqlCommand(sql, parameters);
+        }
+
+        public async Task<bool> InsertAsync<TEntity>(TEntity entity) where TEntity : class
         {
             _dbContext.Set<TEntity>().Add(entity);
             if (_dbTransaction != null)
@@ -37,8 +41,15 @@ namespace Galaxy.Data
             return true;
         }
 
-        public async Task<bool> InsertAsync<TEntity>(IEnumerable<TEntity> entities)
-           where TEntity : class
+        public bool Insert<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Add(entity);
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
+            return true;
+        }
+
+        public async Task<bool> InsertAsync<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
         {
             foreach (TEntity entity in entities)
                 _dbContext.Set<TEntity>().Add(entity);
@@ -48,8 +59,17 @@ namespace Galaxy.Data
             return true;
         }
 
-        public async Task<bool> UpdateAsync<TEntity>(TEntity entity)
-            where TEntity : class
+        public bool Insert<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            foreach (TEntity entity in entities)
+                _dbContext.Set<TEntity>().Add(entity);
+
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
+            return true;
+        }
+
+        public async Task<bool> UpdateAsync<TEntity>(TEntity entity) where TEntity : class
         {
             _dbContext.Entry<TEntity>(entity).State = EntityState.Modified;
             if (_dbTransaction != null)
@@ -57,8 +77,15 @@ namespace Galaxy.Data
             return true;
         }
 
-        public async Task<bool> CleanAsync<TEntity>(TEntity entity)
-            where TEntity : class
+        public bool Update<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Entry<TEntity>(entity).State = EntityState.Modified;
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
+            return true;
+        }
+
+        public async Task<bool> CleanAsync<TEntity>(TEntity entity) where TEntity : class
         {
             _dbContext.Entry<TEntity>(entity).State = EntityState.Unchanged;
             if (_dbTransaction != null)
@@ -66,8 +93,15 @@ namespace Galaxy.Data
             return true;
         }
 
-        public async Task<bool> DeleteAsync<TEntity>(Expression<Func<TEntity, bool>> predicate)
-            where TEntity : class
+        public bool Clean<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Entry<TEntity>(entity).State = EntityState.Unchanged;
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class
         {
             var entitys = _dbContext.Set<TEntity>().Where(predicate).ToList();
             entitys.ForEach(m => _dbContext.Entry<TEntity>(m).State = EntityState.Deleted);
@@ -76,12 +110,28 @@ namespace Galaxy.Data
             return true;
         }
 
-        public async Task<bool> DeleteAsync<TEntity>(TEntity entity)
-            where TEntity : class
+        public bool Delete<TEntity>(Expression<Func<TEntity, bool>> predicate) where TEntity : class
+        {
+            var entitys = _dbContext.Set<TEntity>().Where(predicate).ToList();
+            entitys.ForEach(m => _dbContext.Entry<TEntity>(m).State = EntityState.Deleted);
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync<TEntity>(TEntity entity) where TEntity : class
         {
             _dbContext.Set<TEntity>().Remove(entity);
             if (_dbTransaction != null)
                 return await _dbContext.SaveChangesAsync() > 0;
+            return true;
+        }
+
+        public bool Delete<TEntity>(TEntity entity) where TEntity : class
+        {
+            _dbContext.Set<TEntity>().Remove(entity);
+            if (_dbTransaction != null)
+                return _dbContext.SaveChanges() > 0;
             return true;
         }
 
@@ -93,6 +143,19 @@ namespace Galaxy.Data
                 _dbTransaction.Commit();
 
             _dbTransaction.Dispose();
+
+            return true;
+        }
+
+        public bool Commit()
+        {
+            if (_dbTransaction == null)
+                return _dbContext.SaveChanges() > 0;
+            else
+                _dbTransaction.Commit();
+
+            _dbTransaction.Dispose();
+
             return true;
         }
 

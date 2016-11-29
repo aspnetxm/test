@@ -5,7 +5,7 @@
 *********************************************************************************/
 using System.ComponentModel;
 
-namespace Galaxy.Application
+namespace Galaxy.Service
 {
     public enum DbLogType
     {

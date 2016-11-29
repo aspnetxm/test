@@ -10,15 +10,13 @@ using System.Threading.Tasks;
 
 namespace Galaxy.Data
 {
-    public interface IDbContext
+    public interface IDbContext : IDisposable
     {
         Database Database { get; }
 
-        DbSet<TEntity> Set<TEntity>()
-            where TEntity : class;
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)
-            where TEntity : class;
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
         Task<int> SaveChangesAsync();
 

@@ -9,10 +9,11 @@ using Galaxy.Domain.Entity.SystemManage;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User>
     {
         Task DeleteAsync(string keyValue);
         Task UpdateAsync(User userEntity, UserLogOn userLogOnEntity);
         Task InsertAsync(User userEntity, UserLogOn userLogOnEntity);
+        Task UpdateAsync(User userEntity);
     }
 }
