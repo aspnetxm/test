@@ -14,7 +14,7 @@ namespace Galaxy.Repository.SystemManage
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
         IUnitOfWork _uk;
-        public UserRepository(IUnitOfWork unitOfWork)
+        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _uk = unitOfWork;
         }
@@ -37,12 +37,6 @@ namespace Galaxy.Repository.SystemManage
             _uk.BeginTransaction();
             await _uk.UpdateAsync<User>(user);
             await _uk.UpdateAsync<UserLogOn>(userLogOn);
-            await _uk.CommitAsync();
-        }
-
-        public async Task UpdateAsync(User user)
-        {
-            await _uk.UpdateAsync<User>(user);
             await _uk.CommitAsync();
         }
 

@@ -14,6 +14,5 @@ namespace Galaxy.Domain.IRepository.SystemManage
         Task DeleteAsync(string keyValue);
         Task UpdateAsync(User userEntity, UserLogOn userLogOnEntity);
         Task InsertAsync(User userEntity, UserLogOn userLogOnEntity);
-        Task UpdateAsync(User userEntity);
     }
 }

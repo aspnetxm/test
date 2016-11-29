@@ -12,6 +12,65 @@ namespace Galaxy.Data
     {
         private IDbContext _dbcontext = new GalaxyDbContext();
 
+        IUnitOfWork _uk;
+        public BaseRepository(IUnitOfWork unitOfWork)
+        {
+            _uk = unitOfWork;
+        }
+
+        public bool Insert(TEntity entity)
+        {
+            return _uk.Insert(entity);
+        }
+
+        public async Task<bool> InsertAsync(TEntity entity)
+        {
+            return await _uk.InsertAsync(entity);
+        }
+
+        public bool Insert(List<TEntity> entitys)
+        {
+            return _uk.Insert(entitys);
+        }
+
+        public async Task<bool> InsertAsync(List<TEntity> entitys)
+        {
+            return await _uk.InsertAsync(entitys);
+        }
+        public bool Update(TEntity entity)
+        {
+            return _uk.Update(entity);
+        }
+        public async Task<bool> UpdateAsync(TEntity entity)
+        {
+            return await _uk.UpdateAsync(entity);
+        }
+        public bool Delete(TEntity entity)
+        {
+            return _uk.Delete(entity);
+        }
+        public async Task<bool> DeleteAsync(TEntity entity)
+        {
+            return await _uk.DeleteAsync(entity);
+        }
+        public bool Delete(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _uk.Delete(predicate);
+        }
+        public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _uk.DeleteAsync(predicate);
+        }
+
+
+
+
+
+
+
+
+
+
         public async Task<TEntity> GetAsync(object keyValue)
         {
             return await _dbcontext.Set<TEntity>().FindAsync(keyValue);
