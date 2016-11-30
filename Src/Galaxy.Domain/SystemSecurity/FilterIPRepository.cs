@@ -9,8 +9,12 @@ using Galaxy.Domain.IRepository.SystemSecurity;
 
 namespace Galaxy.Repository.SystemSecurity
 {
-    public class FilterIPRepository : RepositoryBase<FilterIP>, IFilterIPRepository
+    public class FilterIPRepository : BaseRepository<FilterIP>, IFilterIPRepository
     {
-       
+        IDbContext _dbContext;
+        public FilterIPRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }

@@ -4,18 +4,26 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
+using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class ModuleButtonApp
+    public class ModuleButtonService: IModuleButtonService
     {
-        private IModuleButtonRepository service = new ModuleButtonRepository();
+        private IUnitOfWork _unitOfWork;
+        private IModuleButtonRepository _moduleButtonRepository;
+
+        public ModuleButtonService(IUnitOfWork unitOfWork, IModuleButtonRepository moduleButtonRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _moduleButtonRepository = moduleButtonRepository;
+        }
 
         public List<ModuleButton> GetList(string moduleId = "")
         {
@@ -24,21 +32,22 @@ namespace Galaxy.Service.SystemManage
             {
                 expression = expression.And(t => t.ModuleId == moduleId);
             }
-            return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
+            return _moduleButtonRepository.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
         public ModuleButton GetForm(string keyValue)
         {
-            return service.Get(keyValue);
+            return _moduleButtonRepository.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
-            if (service.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
+            if (_moduleButtonRepository.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
             {
                 throw new Exception("删除失败！操作的对象包含了下级数据。");
             }
             else
             {
-                service.Delete(t => t.Id == keyValue);
+                _unitOfWork.Delete<ModuleButton>(t => t.Id == keyValue);
+                _unitOfWork.Commit();
             }
         }
         public void SubmitForm(ModuleButton moduleButtonEntity, string keyValue)
@@ -46,13 +55,14 @@ namespace Galaxy.Service.SystemManage
             if (!string.IsNullOrEmpty(keyValue))
             {
                 moduleButtonEntity.Modify(keyValue);
-                service.Update(moduleButtonEntity);
+                _unitOfWork.Update(moduleButtonEntity);
             }
             else
             {
                 moduleButtonEntity.Create();
-                service.Insert(moduleButtonEntity);
+                _unitOfWork.Insert(moduleButtonEntity);
             }
+            _unitOfWork.Commit();
         }
         public void SubmitCloneButton(string moduleId, string Ids)
         {
@@ -66,7 +76,12 @@ namespace Galaxy.Service.SystemManage
                 moduleButtonEntity.ModuleId = moduleId;
                 entitys.Add(moduleButtonEntity);
             }
-            service.SubmitCloneButton(entitys);
+
+            foreach (var item in entitys)
+            {
+                _unitOfWork.Insert(item);
+            }
+            _unitOfWork.Commit();
         }
     }
 }

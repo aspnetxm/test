@@ -3,19 +3,24 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
+using Galaxy.Code;
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Galaxy.Repository.SystemManage
+namespace Galaxy.Service.Interfaces
 {
-    public class RoleAuthorizeRepository : BaseRepository<RoleAuthorize>, IRoleAuthorizeRepository
+    public interface IRoleService
     {
-        IDbContext _dbContext;
-        public RoleAuthorizeRepository(IDbContext dbContext) : base(dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        List<Role> GetList(string keyword = "");
+
+        Role GetForm(string keyValue);
+
+        void DeleteForm(string keyValue);
+
+        void SubmitForm(Role roleEntity, string[] permissionIds, string keyValue);
     }
 }

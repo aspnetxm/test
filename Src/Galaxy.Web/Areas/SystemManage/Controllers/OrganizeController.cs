@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Service.SystemManage;
+using Galaxy.Service.Interfaces;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
@@ -14,13 +14,17 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class OrganizeController : ControllerBase
     {
-        private OrganizeApp organizeApp = new OrganizeApp();
+        private IOrganizeService _organizeApp ;
+
+        public OrganizeController(IOrganizeService organizeApp) {
+            _organizeApp = organizeApp;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetTreeSelectJson()
         {
-            var data = organizeApp.GetList();
+            var data = _organizeApp.GetList();
             var treeList = new List<TreeSelectModel>();
             foreach (Organize item in data)
             {
@@ -37,7 +41,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetTreeJson()
         {
-            var data = organizeApp.GetList();
+            var data = _organizeApp.GetList();
             var treeList = new List<TreeViewModel>();
             foreach (Organize item in data)
             {
@@ -58,7 +62,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetTreeGridJson(string keyword)
         {
-            var data = organizeApp.GetList();
+            var data = _organizeApp.GetList();
             if (!string.IsNullOrEmpty(keyword))
             {
                 data = data.TreeWhere(t => t.FullName.Contains(keyword));
@@ -81,7 +85,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = organizeApp.GetForm(keyValue);
+            var data = _organizeApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -89,7 +93,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(Organize organizeEntity, string keyValue)
         {
-            organizeApp.SubmitForm(organizeEntity, keyValue,"");
+            _organizeApp.SubmitForm(organizeEntity, keyValue,"");
             return Success("操作成功。");
         }
         [HttpPost]
@@ -98,7 +102,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            organizeApp.DeleteForm(keyValue);
+            _organizeApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

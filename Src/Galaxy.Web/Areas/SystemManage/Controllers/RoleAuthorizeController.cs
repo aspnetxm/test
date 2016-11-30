@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Service.SystemManage;
+using Galaxy.Service.Interfaces;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
@@ -14,18 +14,25 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class RoleAuthorizeController : ControllerBase
     {
-        private RoleAuthorizeApp roleAuthorizeApp = new RoleAuthorizeApp();
-        private ModuleApp moduleApp = new ModuleApp();
-        private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
+        private IRoleAuthorizeService _roleAuthorizeApp;
+        private IModuleService _moduleApp;
+        private IModuleButtonService _moduleButtonApp;
+
+        public RoleAuthorizeController(IRoleAuthorizeService roleAuthorizeApp, IModuleService moduleApp, IModuleButtonService moduleButtonApp)
+        {
+            _roleAuthorizeApp = roleAuthorizeApp;
+            _moduleApp = moduleApp;
+            _moduleButtonApp = moduleButtonApp;
+        }
 
         public ActionResult GetPermissionTree(string roleId)
         {
-            var moduledata = moduleApp.GetList();
-            var buttondata = moduleButtonApp.GetList();
+            var moduledata = _moduleApp.GetList();
+            var buttondata = _moduleButtonApp.GetList();
             var authorizedata = new List<RoleAuthorize>();
             if (!string.IsNullOrEmpty(roleId))
             {
-                authorizedata = roleAuthorizeApp.GetList(roleId);
+                authorizedata = _roleAuthorizeApp.GetList(roleId);
             }
             var treeList = new List<TreeViewModel>();
             foreach (Module item in moduledata)

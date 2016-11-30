@@ -10,8 +10,12 @@ using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class OrganizeRepository : RepositoryBase<Organize>, IOrganizeRepository
+    public class OrganizeRepository : BaseRepository<Organize>, IOrganizeRepository
     {
-
+        IDbContext _dbContext;
+        public OrganizeRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }

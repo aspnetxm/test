@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemSecurity;
 
 namespace Galaxy.Domain.IRepository.SystemSecurity
 {
-    public interface ILogRepository : IRepositoryBase<OprLog>
+    public interface ILogRepository : IBaseRepository<OprLog>
     {
     }
 }

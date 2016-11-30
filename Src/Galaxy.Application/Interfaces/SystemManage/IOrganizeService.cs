@@ -5,12 +5,20 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Galaxy.Domain.IRepository.SystemManage
+namespace Galaxy.Service.Interfaces
 {
-    public interface IModuleButtonRepository : IBaseRepository<ModuleButton>
+    public interface IOrganizeService
     {
-        void SubmitCloneButton(List<ModuleButton> entitys);
+        List<Organize> GetList();
+
+        Organize GetForm(string keyValue);
+
+        void DeleteForm(string keyValue);
+
+        void SubmitForm(Organize organizeEntity, string keyValue, string userId);
     }
 }

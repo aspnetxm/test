@@ -9,8 +9,12 @@ using Galaxy.Domain.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class ItemsRepository : RepositoryBase<Items>, IItemsRepository
+    public class ItemsRepository : BaseRepository<Items>, IItemsRepository
     {
-
+        IDbContext _dbContext;
+        public ItemsRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }

@@ -5,34 +5,44 @@
 *********************************************************************************/
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
+using Galaxy.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class ItemsApp
+    public class ItemsService: IItemsService
     {
-        private IItemsRepository service = new ItemsRepository();
+        private IItemsRepository _itemsRepository;
+        private IUnitOfWork _unitOfWork;
+
+        public ItemsService(IUnitOfWork unitOfWork, IItemsRepository itemsRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _itemsRepository = itemsRepository;
+        }
 
         public List<Items> GetList()
         {
-            return service.IQueryable().ToList();
+            return _itemsRepository.IQueryable().ToList();
         }
         public Items GetForm(string keyValue)
         {
-            return service.Get(keyValue);
+            return _itemsRepository.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
-            if (service.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
+            if (_itemsRepository.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
             {
                 throw new Exception("删除失败！操作的对象包含了下级数据。");
             }
             else
             {
-                service.Delete(t => t.Id == keyValue);
+                _unitOfWork.Delete<Items>(t => t.Id == keyValue);
+                _unitOfWork.Commit();
             }
         }
         public void SubmitForm(Items itemsEntity, string keyValue)
@@ -40,12 +50,14 @@ namespace Galaxy.Service.SystemManage
             if (!string.IsNullOrEmpty(keyValue))
             {
                 itemsEntity.Modify(keyValue);
-                service.Update(itemsEntity);
+                _unitOfWork.Update(itemsEntity);
+                _unitOfWork.Commit();
             }
             else
             {
                 itemsEntity.Create();
-                service.Insert(itemsEntity);
+                _unitOfWork.Insert(itemsEntity);
+                _unitOfWork.Commit();
             }
         }
     }

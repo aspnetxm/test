@@ -6,6 +6,7 @@
 using Galaxy.Service.SystemManage;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Service.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,23 +15,28 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class RoleController : ControllerBase
     {
-        private RoleApp roleApp = new RoleApp();
-        private RoleAuthorizeApp roleAuthorizeApp = new RoleAuthorizeApp();
-        private ModuleApp moduleApp = new ModuleApp();
-        private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
+        private IRoleService _roleApp;
+        private IRoleAuthorizeService _roleAuthorizeApp;
+        private IModuleButtonService _moduleButtonApp;
+
+        public RoleController(IRoleService roleApp, IRoleAuthorizeService roleAuthorizeApp,  IModuleButtonService moduleButtonApp) {
+            _roleApp = roleApp;
+            _roleAuthorizeApp = roleAuthorizeApp;
+            _moduleButtonApp = moduleButtonApp;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetGridJson(string keyword)
         {
-            var data = roleApp.GetList(keyword);
+            var data = _roleApp.GetList(keyword);
             return Content(data.ToJson());
         }
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = roleApp.GetForm(keyValue);
+            var data = _roleApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -38,7 +44,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(Role roleEntity, string permissionIds, string keyValue)
         {
-            roleApp.SubmitForm(roleEntity, permissionIds.Split(','), keyValue);
+            _roleApp.SubmitForm(roleEntity, permissionIds.Split(','), keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -47,7 +53,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            roleApp.DeleteForm(keyValue);
+            _roleApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

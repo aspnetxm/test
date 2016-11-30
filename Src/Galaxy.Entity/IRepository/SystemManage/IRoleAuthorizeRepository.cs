@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemManage;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IRoleAuthorizeRepository : IRepositoryBase<RoleAuthorize>
+    public interface IRoleAuthorizeRepository : IBaseRepository<RoleAuthorize>
     {
     }
 }

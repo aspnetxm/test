@@ -10,34 +10,31 @@ using System.Collections.Generic;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
-        public void DeleteForm(string keyValue)
+        IDbContext _dbContext;
+        public RoleRepository(IDbContext dbContext) : base(dbContext)
         {
-            using (var db = new RepositoryBase().BeginTrans())
-            {
-                db.Delete<Role>(t => t.Id == keyValue);
-                db.Delete<RoleAuthorize>(t => t.ObjectId == keyValue);
-                db.Commit();
-            }
+            _dbContext = dbContext;
         }
-        public void SubmitForm(Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue)
+        public void DeleteForm(IUnitOfWork uk, string keyValue)
         {
-            using (var db = new RepositoryBase().BeginTrans())
+            uk.Delete<Role>(t => t.Id == keyValue);
+            uk.Delete<RoleAuthorize>(t => t.ObjectId == keyValue);
+        }
+        public void SubmitForm(IUnitOfWork uk, Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue)
+        {
+            if (!string.IsNullOrEmpty(keyValue))
             {
-                if (!string.IsNullOrEmpty(keyValue))
-                {
-                    db.Update(roleEntity);
-                }
-                else
-                {
-                    roleEntity.Category = 1;
-                    db.Insert(roleEntity);
-                }
-                db.Delete<RoleAuthorize>(t => t.ObjectId == roleEntity.Id);
-                db.Insert(roleAuthorizeEntitys);
-                db.Commit();
+                uk.Update(roleEntity);
             }
+            else
+            {
+                roleEntity.Category = 1;
+                uk.Insert(roleEntity);
+            }
+            uk.Delete<RoleAuthorize>(t => t.ObjectId == roleEntity.Id);
+            uk.Insert(roleAuthorizeEntitys);
         }
     }
 }

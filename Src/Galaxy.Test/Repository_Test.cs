@@ -41,7 +41,7 @@ namespace Galaxy.Test
 
             var mock = new Mock<IUserRepository>();
 
-            mock.Setup(o => o.InsertAsync(user, userLogOn));
+             
 
 
             mock.Setup(o => o.Get(user.Id)).Returns(user);

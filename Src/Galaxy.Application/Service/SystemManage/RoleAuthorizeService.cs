@@ -7,22 +7,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Galaxy.Code;
+using Galaxy.Data;
 using Galaxy.Domain.Dto;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class RoleAuthorizeApp
+    public class RoleAuthorizeService: IRoleAuthorizeService
     {
-        private IRoleAuthorizeRepository service = new RoleAuthorizeRepository();
-        private ModuleApp moduleApp = new ModuleApp();
-        private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
+        private IUnitOfWork _unitOfWork;
+        private IRoleAuthorizeRepository _roleAuthorizeRepository;
+        private ModuleService moduleApp;
+        private ModuleButtonService moduleButtonApp;
+
+        public RoleAuthorizeService(IUnitOfWork unitOfWork, IRoleAuthorizeRepository roleAuthorizeRepository, IModuleButtonRepository moduleButtonRepository, IModuleRepository moduleRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _roleAuthorizeRepository = roleAuthorizeRepository;
+            moduleApp = new ModuleService(_unitOfWork, moduleRepository);
+            moduleButtonApp = new ModuleButtonService(_unitOfWork, moduleButtonRepository);
+        }
 
         public List<RoleAuthorize> GetList(string ObjectId)
         {
-            return service.IQueryable(t => t.ObjectId == ObjectId).ToList();
+            return _roleAuthorizeRepository.IQueryable(t => t.ObjectId == ObjectId).ToList();
         }
         public List<Module> GetMenuList(string roleId)
         {
@@ -34,7 +44,7 @@ namespace Galaxy.Service.SystemManage
             else
             {
                 var moduledata = moduleApp.GetList();
-                var authorizedata = service.IQueryable(t => t.ObjectId == roleId && t.ItemType == 1).ToList();
+                var authorizedata = _roleAuthorizeRepository.IQueryable(t => t.ObjectId == roleId && t.ItemType == 1).ToList();
                 foreach (var item in authorizedata)
                 {
                     Module moduleEntity = moduledata.Find(t => t.Id == item.ItemId);
@@ -56,7 +66,7 @@ namespace Galaxy.Service.SystemManage
             else
             {
                 var buttondata = moduleButtonApp.GetList();
-                var authorizedata = service.IQueryable(t => t.ObjectId == roleId && t.ItemType == 2).ToList();
+                var authorizedata = _roleAuthorizeRepository.IQueryable(t => t.ObjectId == roleId && t.ItemType == 2).ToList();
                 foreach (var item in authorizedata)
                 {
                     ModuleButton moduleButtonEntity = buttondata.Find(t => t.Id == item.ItemId);
@@ -76,7 +86,7 @@ namespace Galaxy.Service.SystemManage
             {
                 var moduledata = moduleApp.GetList();
                 var buttondata = moduleButtonApp.GetList();
-                var authorizedata = service.IQueryable(t => t.ObjectId == roleId).ToList();
+                var authorizedata = _roleAuthorizeRepository.IQueryable(t => t.ObjectId == roleId).ToList();
                 foreach (var item in authorizedata)
                 {
                     if (item.ItemType == 1)

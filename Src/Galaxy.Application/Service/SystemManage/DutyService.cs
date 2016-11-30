@@ -4,17 +4,25 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
+using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class DutyApp
+    public class DutyService: IDutyService
     {
-        private IRoleRepository service = new RoleRepository();
+        private IRoleRepository _roleRepository ;
+        private IUnitOfWork _unitOfWork;
+
+        public DutyService(IUnitOfWork unitOfWork, IRoleRepository roleRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _roleRepository = roleRepository;
+        }
 
         public List<Role> GetList(string keyword = "")
         {
@@ -25,29 +33,31 @@ namespace Galaxy.Service.SystemManage
                 expression = expression.Or(t => t.EnCode.Contains(keyword));
             }
             expression = expression.And(t => t.Category == 2);
-            return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
+            return _roleRepository.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
         public Role GetForm(string keyValue)
         {
-            return service.Get(keyValue);
+            return _roleRepository.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
-            service.Delete(t => t.Id == keyValue);
+            _unitOfWork.Delete<Role>(t => t.Id == keyValue);
+            _unitOfWork.Commit();
         }
         public void SubmitForm(Role roleEntity, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
                 roleEntity.Modify(keyValue);
-                service.Update(roleEntity);
+                _unitOfWork.Update(roleEntity);
             }
             else
             {
                 roleEntity.Create();
                 roleEntity.Category = 2;
-                service.Insert(roleEntity);
+                _unitOfWork.Insert(roleEntity);
             }
+            _unitOfWork.Commit();
         }
     }
 }

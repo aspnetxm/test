@@ -45,7 +45,7 @@ namespace Galaxy.Web
             var roleId = operatorProvider.RoleId;
             var moduleId = WebHelper.GetCookie("Galaxy_currentmoduleid");
             var action = HttpContext.Current.Request.ServerVariables["SCRIPT_NAME"].ToString();
-            return new RoleAuthorizeApp().ActionValidate(roleId, moduleId, action);
+            return new RoleAuthorizeService(  ).ActionValidate(roleId, moduleId, action);
         }
     }
 }

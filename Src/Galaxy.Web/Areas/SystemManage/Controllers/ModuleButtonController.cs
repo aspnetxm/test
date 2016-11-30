@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Service.SystemManage;
+using Galaxy.Service.Interfaces;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
@@ -14,13 +14,21 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class ModuleButtonController : ControllerBase
     {
-        private ModuleApp moduleApp = new ModuleApp();
-        private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
+        private IModuleService _moduleApp ;
+        private IModuleButtonService _moduleButtonApp ;
+
+        public ModuleButtonController(IModuleService moduleApp, IModuleButtonService moduleButtonApp)
+        {
+            _moduleApp = moduleApp;
+            _moduleButtonApp = moduleButtonApp;
+        }
+
+
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetTreeSelectJson(string moduleId)
         {
-            var data = moduleButtonApp.GetList(moduleId);
+            var data = _moduleButtonApp.GetList(moduleId);
             var treeList = new List<TreeSelectModel>();
             foreach (ModuleButton item in data)
             {
@@ -36,7 +44,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetTreeGridJson(string moduleId)
         {
-            var data = moduleButtonApp.GetList(moduleId);
+            var data = _moduleButtonApp.GetList(moduleId);
             var treeList = new List<TreeGridModel>();
             foreach (ModuleButton item in data)
             {
@@ -55,7 +63,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = moduleButtonApp.GetForm(keyValue);
+            var data = _moduleButtonApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -63,7 +71,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(ModuleButton moduleButtonEntity, string keyValue)
         {
-            moduleButtonApp.SubmitForm(moduleButtonEntity, keyValue);
+            _moduleButtonApp.SubmitForm(moduleButtonEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -71,7 +79,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            moduleButtonApp.DeleteForm(keyValue);
+            _moduleButtonApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
         [HttpGet]
@@ -83,8 +91,8 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetCloneButtonTreeJson()
         {
-            var moduledata = moduleApp.GetList();
-            var buttondata = moduleButtonApp.GetList();
+            var moduledata = _moduleApp.GetList();
+            var buttondata = _moduleButtonApp.GetList();
             var treeList = new List<TreeViewModel>();
             foreach (Module item in moduledata)
             {
@@ -130,7 +138,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult SubmitCloneButton(string moduleId, string Ids)
         {
-            moduleButtonApp.SubmitCloneButton(moduleId, Ids);
+            _moduleButtonApp.SubmitCloneButton(moduleId, Ids);
             return Success("克隆成功。");
         }
     }

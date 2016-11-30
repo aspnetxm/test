@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IItemsDetailRepository : IRepositoryBase<ItemsDetail>
+    public interface IItemsDetailRepository : IBaseRepository<ItemsDetail>
     {
         List<ItemsDetail> GetItemList(string enCode);
     }

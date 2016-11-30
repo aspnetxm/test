@@ -48,6 +48,6 @@ namespace Galaxy.Service.Interfaces
         /// <param name="keyValue"></param>
         /// <returns></returns>
         Task SubmitForm(User userEntity, UserLogOn userLogOnEntity, string keyValue);
-        
+
     }
 }

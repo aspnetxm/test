@@ -10,6 +10,8 @@ namespace Galaxy.Data
     {
         void BeginTransaction();
 
+        //IDbContext Context { get; }
+
         Task<int> ExecuteSqlCommandAsync(string sql, params object[] parameters);
         int ExecuteSqlCommand(string sql, params object[] parameters);
 

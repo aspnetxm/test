@@ -3,19 +3,20 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Data;
+using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
 using Galaxy.Repository.SystemManage;
+using Galaxy.Data;
 
-namespace Galaxy.Repository.SystemManage
+namespace Galaxy.Service.Interfaces
 {
-    public class RoleAuthorizeRepository : BaseRepository<RoleAuthorize>, IRoleAuthorizeRepository
+    public interface IUserLogOnServic
     {
-        IDbContext _dbContext;
-        public RoleAuthorizeRepository(IDbContext dbContext) : base(dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        UserLogOn GetForm(string keyValue);
+
+        void UpdateForm(UserLogOn userLogOnEntity);
+
+        void RevisePassword(string userPassword, string keyValue);
     }
 }

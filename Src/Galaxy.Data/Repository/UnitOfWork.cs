@@ -13,6 +13,11 @@ namespace Galaxy.Data
         private IDbContext _dbContext;
         private DbContextTransaction _dbTransaction;
 
+        public UnitOfWork()
+        {
+            _dbContext = new GalaxyDbContext();
+        }
+
         public UnitOfWork(IDbContext dbContext)
         {
             _dbContext = dbContext;

@@ -10,66 +10,63 @@ namespace Galaxy.Data
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, new()
     {
-        private IDbContext _dbcontext = new GalaxyDbContext();
+        private IDbContext _dbcontext;//= new GalaxyDbContext();
 
-        IUnitOfWork _uk;
-        public BaseRepository(IUnitOfWork unitOfWork)
+        //IUnitOfWork _unitOfWork;
+        public BaseRepository(IDbContext dbContext)
         {
-            _uk = unitOfWork;
+            _dbcontext = dbContext;
         }
 
-        public bool Insert(TEntity entity)
-        {
-            return _uk.Insert(entity);
-        }
+        //#region command
 
-        public async Task<bool> InsertAsync(TEntity entity)
-        {
-            return await _uk.InsertAsync(entity);
-        }
+        //public bool Insert(TEntity entity)
+        //{
+        //    return _unitOfWork.Insert(entity);
+        //}
 
-        public bool Insert(List<TEntity> entitys)
-        {
-            return _uk.Insert(entitys);
-        }
+        //public async Task<bool> InsertAsync(TEntity entity)
+        //{
+        //    return await _unitOfWork.InsertAsync(entity);
+        //}
 
-        public async Task<bool> InsertAsync(List<TEntity> entitys)
-        {
-            return await _uk.InsertAsync(entitys);
-        }
-        public bool Update(TEntity entity)
-        {
-            return _uk.Update(entity);
-        }
-        public async Task<bool> UpdateAsync(TEntity entity)
-        {
-            return await _uk.UpdateAsync(entity);
-        }
-        public bool Delete(TEntity entity)
-        {
-            return _uk.Delete(entity);
-        }
-        public async Task<bool> DeleteAsync(TEntity entity)
-        {
-            return await _uk.DeleteAsync(entity);
-        }
-        public bool Delete(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _uk.Delete(predicate);
-        }
-        public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await _uk.DeleteAsync(predicate);
-        }
+        //public bool Insert(List<TEntity> entitys)
+        //{
+        //    return _unitOfWork.Insert(entitys);
+        //}
 
+        //public async Task<bool> InsertAsync(List<TEntity> entitys)
+        //{
+        //    return await _unitOfWork.InsertAsync(entitys);
+        //}
+        //public bool Update(TEntity entity)
+        //{
+        //    return _unitOfWork.Update(entity);
+        //}
+        //public async Task<bool> UpdateAsync(TEntity entity)
+        //{
+        //    return await _unitOfWork.UpdateAsync(entity);
+        //}
+        //public bool Delete(TEntity entity)
+        //{
+        //    return _unitOfWork.Delete(entity);
+        //}
+        //public async Task<bool> DeleteAsync(TEntity entity)
+        //{
+        //    return await _unitOfWork.DeleteAsync(entity);
+        //}
+        //public bool Delete(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    return _unitOfWork.Delete(predicate);
+        //}
+        //public async Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        //{
+        //    return await _unitOfWork.DeleteAsync(predicate);
+        //}
 
+        //#endregion
 
-
-
-
-
-
-
+        #region 查询
 
         public async Task<TEntity> GetAsync(object keyValue)
         {
@@ -226,5 +223,7 @@ namespace Galaxy.Data
             tempData = tempData.Skip<TEntity>(pagination.rows * (pagination.page - 1)).Take<TEntity>(pagination.rows).AsQueryable();
             return tempData.ToList();
         }
+
+        #endregion
     }
 }

@@ -9,7 +9,7 @@ using Galaxy.Domain.Entity.SystemManage;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IItemsRepository : IRepositoryBase<Items>
+    public interface IItemsRepository : IBaseRepository<Items>
     {
     }
 }

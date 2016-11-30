@@ -6,6 +6,7 @@
 using Galaxy.Service.SystemManage;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Service.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,20 +15,24 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class DutyController : ControllerBase
     {
-        private DutyApp dutyApp = new DutyApp();
+        private IDutyService _dutyApp;
+
+        public DutyController(IDutyService dutyApp) {
+            _dutyApp = dutyApp;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetGridJson(string keyword)
         {
-            var data = dutyApp.GetList(keyword);
+            var data = _dutyApp.GetList(keyword);
             return Content(data.ToJson());
         }
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = dutyApp.GetForm(keyValue);
+            var data = _dutyApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -35,7 +40,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(Role roleEntity, string keyValue)
         {
-            dutyApp.SubmitForm(roleEntity, keyValue);
+            _dutyApp.SubmitForm(roleEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -44,7 +49,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            dutyApp.DeleteForm(keyValue);
+            _dutyApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

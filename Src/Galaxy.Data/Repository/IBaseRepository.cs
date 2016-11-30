@@ -9,20 +9,16 @@ namespace Galaxy.Data
 {
     public interface IBaseRepository<TEntity> where TEntity : class, new()
     {
-
-        bool Insert(TEntity entity);
-        Task<bool> InsertAsync(TEntity entity);
-        bool Insert(List<TEntity> entitys);
-        Task<bool> InsertAsync(List<TEntity> entitys);
-        bool Update(TEntity entity);
-        Task<bool> UpdateAsync(TEntity entity);
-        bool Delete(TEntity entity);
-        Task<bool> DeleteAsync(TEntity entity);
-        bool Delete(Expression<Func<TEntity, bool>> predicate);
-        Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate);
-
-
-
+        //bool Insert(TEntity entity);
+        //Task<bool> InsertAsync(TEntity entity);
+        //bool Insert(List<TEntity> entitys);
+        //Task<bool> InsertAsync(List<TEntity> entitys);
+        //bool Update(TEntity entity);
+        //Task<bool> UpdateAsync(TEntity entity);
+        //bool Delete(TEntity entity);
+        //Task<bool> DeleteAsync(TEntity entity);
+        //bool Delete(Expression<Func<TEntity, bool>> predicate);
+        //Task<bool> DeleteAsync(Expression<Func<TEntity, bool>> predicate);
 
         Task<TEntity> GetAsync(object keyValue);
 

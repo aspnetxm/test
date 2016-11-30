@@ -9,8 +9,12 @@ using Galaxy.Domain.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class UserLogOnRepository : RepositoryBase<UserLogOn>, IUserLogOnRepository
+    public class UserLogOnRepository : BaseRepository<UserLogOn>, IUserLogOnRepository
     {
-
+        IDbContext _dbContext;
+        public UserLogOnRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }

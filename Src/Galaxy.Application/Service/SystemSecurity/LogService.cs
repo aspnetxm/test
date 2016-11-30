@@ -5,18 +5,26 @@
 *********************************************************************************/
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemSecurity;
 using Galaxy.Domain.IRepository.SystemSecurity;
-using Galaxy.Repository.SystemSecurity;
 using Galaxy.Data;
 
 
 namespace Galaxy.Service.SystemSecurity
 {
-    public class LogApp
+    public class LogService
     {
-        private ILogRepository service = new LogRepository();
+        private IUnitOfWork _unitOfWork;
+        private ILogRepository _logRepository;
+
+        public LogService(IUnitOfWork unitOfWork, ILogRepository logRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _logRepository = logRepository;
+        }
 
         public List<OprLog> GetList(Pagination pagination, string queryJson)
         {
@@ -50,9 +58,10 @@ namespace Galaxy.Service.SystemSecurity
                 }
                 expression = expression.And(t => t.Date >= startTime && t.Date <= endTime);
             }
-            return service.FindList(expression, pagination);
+            return _logRepository.FindList(expression, pagination);
         }
-        public void RemoveLog(string keepTime)
+
+        public async Task RemoveLog(string keepTime)
         {
             DateTime operateTime = DateTime.Now;
             if (keepTime == "7")            //保留近一周
@@ -69,10 +78,11 @@ namespace Galaxy.Service.SystemSecurity
             }
             var expression = LinqExt.True<OprLog>();
             expression = expression.And(t => t.Date <= operateTime);
-            service.Delete(expression);
+            await _unitOfWork.DeleteAsync<OprLog>(expression);
+            await _unitOfWork.CommitAsync();
         }
 
-        public void WriteLog(bool result, string resultLog, string ip)
+        public async Task WriteLog(bool result, string resultLog, string ip)
         {
             OprLog logEntity = new OprLog();
             logEntity.Id = Common.GuId();
@@ -84,17 +94,17 @@ namespace Galaxy.Service.SystemSecurity
             logEntity.Result = result;
             logEntity.Description = resultLog;
             logEntity.Create();
-            service.Insert(logEntity);
+            await _unitOfWork.InsertAsync<OprLog>(logEntity);
         }
 
-        public void WriteLog(OprLog logEntity)
+        public async Task WriteLog(OprLog logEntity)
         {
             logEntity.Id = Common.GuId();
             logEntity.Date = DateTime.Now;
             //logEntity.IPAddress = "117.81.192.182";
             //logEntity.IPAddressName = Net.GetLocation(logEntity.IPAddress);
             logEntity.Create();
-            service.Insert(logEntity);
+            await _unitOfWork.InsertAsync<OprLog>(logEntity);
         }
     }
 }

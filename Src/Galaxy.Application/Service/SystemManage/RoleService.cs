@@ -4,19 +4,30 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
+using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class RoleApp
+    public class RoleService: IRoleService
     {
-        private IRoleRepository service = new RoleRepository();
-        private ModuleApp moduleApp = new ModuleApp();
-        private ModuleButtonApp moduleButtonApp = new ModuleButtonApp();
+        private IUnitOfWork _unitOfWork;
+        private IRoleRepository _roleRepository;
+        private ModuleService moduleApp ;
+        private ModuleButtonService moduleButtonApp ;
+
+        public RoleService(IUnitOfWork unitOfWork, IRoleRepository roleRepository, IModuleButtonRepository moduleButtonRepository, IModuleRepository moduleRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _roleRepository = roleRepository;
+            moduleApp = new ModuleService(_unitOfWork, moduleRepository);
+            moduleButtonApp = new ModuleButtonService(_unitOfWork, moduleButtonRepository);
+        }
+
 
         public List<Role> GetList(string keyword = "")
         {
@@ -27,15 +38,16 @@ namespace Galaxy.Service.SystemManage
                 expression = expression.Or(t => t.EnCode.Contains(keyword));
             }
             expression = expression.And(t => t.Category == 1);
-            return service.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
+            return _roleRepository.IQueryable(expression).OrderBy(t => t.SortCode).ToList();
         }
         public Role GetForm(string keyValue)
         {
-            return service.Get(keyValue);
+            return _roleRepository.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
-            service.DeleteForm(keyValue);
+            _roleRepository.DeleteForm(_unitOfWork, keyValue);
+            _unitOfWork.Commit();
         }
         public void SubmitForm(Role roleEntity, string[] permissionIds, string keyValue)
         {
@@ -67,7 +79,8 @@ namespace Galaxy.Service.SystemManage
                 }
                 roleAuthorizeEntitys.Add(roleAuthorizeEntity);
             }
-            service.SubmitForm(roleEntity, roleAuthorizeEntitys, keyValue);
+            _roleRepository.SubmitForm(_unitOfWork,roleEntity, roleAuthorizeEntitys, keyValue);
+            _unitOfWork.Commit();
         }
     }
 }

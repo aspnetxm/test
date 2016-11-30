@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Service.SystemManage;
+using Galaxy.Service.Interfaces;
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
@@ -14,13 +14,18 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class AreaController : ControllerBase
     {
-        private AreaApp areaApp = new AreaApp();
+        private IAreaService _areaApp ;
+
+        public AreaController(IAreaService areaApp)
+        {
+            _areaApp = areaApp;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetTreeSelectJson()
         {
-            var data = areaApp.GetList();
+            var data = _areaApp.GetList();
             var treeList = new List<TreeSelectModel>();
             foreach (Area item in data)
             {
@@ -36,7 +41,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetTreeGridJson(string keyword)
         {
-            var data = areaApp.GetList();
+            var data = _areaApp.GetList();
             var treeList = new List<TreeGridModel>();
             foreach (Area item in data)
             {
@@ -60,7 +65,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = areaApp.GetForm(keyValue);
+            var data = _areaApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -68,7 +73,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(Area areaEntity, string keyValue)
         {
-            areaApp.SubmitForm(areaEntity, keyValue);
+            _areaApp.SubmitForm(areaEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -77,7 +82,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            areaApp.DeleteForm(keyValue);
+            _areaApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

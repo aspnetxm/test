@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemSecurity;
 
 namespace Galaxy.Domain.IRepository.SystemSecurity
 {
-    public interface IDbBackupRepository : IRepositoryBase<DbBackup>
+    public interface IDbBackupRepository : IBaseRepository<DbBackup>
     {
         void DeleteForm(string keyValue);
         void ExecuteDbBackup(DbBackup dbBackupEntity);

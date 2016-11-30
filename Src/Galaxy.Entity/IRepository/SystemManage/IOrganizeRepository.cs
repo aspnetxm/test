@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemManage;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IOrganizeRepository : IRepositoryBase<Organize>
+    public interface IOrganizeRepository : IBaseRepository<Organize>
     {
     }
 }

@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemSecurity;
 
 namespace Galaxy.Domain.IRepository.SystemSecurity
 {
-    public interface IFilterIPRepository : IRepositoryBase<FilterIP>
+    public interface IFilterIPRepository : IBaseRepository<FilterIP>
     {
         
     }

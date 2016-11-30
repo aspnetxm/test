@@ -14,13 +14,18 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 {
     public class ModuleController : ControllerBase
     {
-        private ModuleApp moduleApp = new ModuleApp();
+        private ModuleService _moduleApp;
+
+        public ModuleController(ModuleService moduleApp)
+        {
+            _moduleApp = moduleApp;
+        }
 
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetTreeSelectJson()
         {
-            var data = moduleApp.GetList();
+            var data = _moduleApp.GetList();
             var treeList = new List<TreeSelectModel>();
             foreach (Module item in data)
             {
@@ -36,7 +41,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetTreeGridJson(string keyword)
         {
-            var data = moduleApp.GetList();
+            var data = _moduleApp.GetList();
             if (!string.IsNullOrEmpty(keyword))
             {
                 data = data.TreeWhere(t => t.FullName.Contains(keyword));
@@ -59,7 +64,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)
         {
-            var data = moduleApp.GetForm(keyValue);
+            var data = _moduleApp.GetForm(keyValue);
             return Content(data.ToJson());
         }
         [HttpPost]
@@ -67,7 +72,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitForm(Module moduleEntity, string keyValue)
         {
-            moduleApp.SubmitForm(moduleEntity, keyValue);
+            _moduleApp.SubmitForm(moduleEntity, keyValue);
             return Success("操作成功。");
         }
         [HttpPost]
@@ -76,7 +81,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteForm(string keyValue)
         {
-            moduleApp.DeleteForm(keyValue);
+            _moduleApp.DeleteForm(keyValue);
             return Success("删除成功。");
         }
     }

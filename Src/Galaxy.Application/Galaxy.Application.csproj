@@ -41,22 +41,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\DbLogType.cs" />
+    <Compile Include="Interfaces\SystemManage\IAreaService.cs" />
+    <Compile Include="Interfaces\SystemManage\IDutyService.cs" />
+    <Compile Include="Interfaces\SystemManage\IItemsDetailService.cs" />
+    <Compile Include="Interfaces\SystemManage\IItemsService.cs" />
     <Compile Include="Interfaces\SystemManage\IUserService.cs" />
+    <Compile Include="Interfaces\SystemManage\IModuleButtonService.cs" />
+    <Compile Include="Interfaces\SystemManage\IModuleService.cs" />
+    <Compile Include="Interfaces\SystemManage\IOrganizeService.cs" />
+    <Compile Include="Interfaces\SystemManage\IRoleAuthorizeService.cs" />
+    <Compile Include="Interfaces\SystemManage\IRoleService.cs" />
+    <Compile Include="Interfaces\SystemManage\IUserLogOnServic.cs" />
+    <Compile Include="Interfaces\SystemSecurity\IDbBackupService.cs" />
+    <Compile Include="Interfaces\SystemSecurity\IFilterIPService.cs" />
+    <Compile Include="Interfaces\SystemSecurity\ILogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\SystemManage\AreaApp.cs" />
-    <Compile Include="Service\SystemManage\DutyApp.cs" />
-    <Compile Include="Service\SystemManage\ItemsApp.cs" />
-    <Compile Include="Service\SystemManage\ItemsDetailApp.cs" />
-    <Compile Include="Service\SystemManage\ModuleApp.cs" />
-    <Compile Include="Service\SystemManage\ModuleButtonApp.cs" />
-    <Compile Include="Service\SystemManage\OrganizeApp.cs" />
-    <Compile Include="Service\SystemManage\RoleApp.cs" />
-    <Compile Include="Service\SystemManage\RoleAuthorizeApp.cs" />
-    <Compile Include="Service\SystemManage\UserLogOnApp.cs" />
+    <Compile Include="Service\SystemManage\AreaService.cs" />
+    <Compile Include="Service\SystemManage\DutyService.cs" />
+    <Compile Include="Service\SystemManage\ItemsService.cs" />
+    <Compile Include="Service\SystemManage\ItemsDetailService.cs" />
+    <Compile Include="Service\SystemManage\ModuleService.cs" />
+    <Compile Include="Service\SystemManage\ModuleButtonService.cs" />
+    <Compile Include="Service\SystemManage\OrganizeService.cs" />
+    <Compile Include="Service\SystemManage\RoleService.cs" />
+    <Compile Include="Service\SystemManage\RoleAuthorizeService.cs" />
+    <Compile Include="Service\SystemManage\UserLogOnServic.cs" />
     <Compile Include="Service\SystemManage\UserService.cs" />
-    <Compile Include="Service\SystemSecurity\DbBackupApp.cs" />
-    <Compile Include="Service\SystemSecurity\FilterIPApp.cs" />
-    <Compile Include="Service\SystemSecurity\LogApp.cs" />
+    <Compile Include="Service\SystemSecurity\DbBackupService.cs" />
+    <Compile Include="Service\SystemSecurity\FilterIPService.cs" />
+    <Compile Include="Service\SystemSecurity\LogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Galaxy.Code\Galaxy.Code.csproj">

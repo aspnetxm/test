@@ -14,8 +14,15 @@ using System.Text;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class ItemsDetailRepository : RepositoryBase<ItemsDetail>, IItemsDetailRepository
+    public class ItemsDetailRepository : BaseRepository<ItemsDetail>, IItemsDetailRepository
     {
+
+        IDbContext _dbContext;
+        public ItemsDetailRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public List<ItemsDetail> GetItemList(string enCode)
         {
             StringBuilder strSql = new StringBuilder();

@@ -8,7 +8,7 @@ using Galaxy.Domain.Entity.SystemManage;
 
 namespace Galaxy.Domain.IRepository.SystemManage
 {
-    public interface IUserLogOnRepository : IRepositoryBase<UserLogOn>
+    public interface IUserLogOnRepository : IBaseRepository<UserLogOn>
     {
     }
 }

@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Galaxy.Data.Extensions
 {
@@ -22,6 +23,16 @@ namespace Galaxy.Data.Extensions
                 return cmd.ExecuteNonQuery();
             }
         }
+        public static async Task<int> ExecuteSqlCommandAsync(string cmdText)
+        {
+            using (DbConnection conn = new SqlConnection(connstring))
+            {
+                DbCommand cmd = new SqlCommand();
+                PrepareCommand(cmd, conn, null, CommandType.Text, cmdText, null);
+                return await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
         private static void PrepareCommand(DbCommand cmd, DbConnection conn, DbTransaction isOpenTrans, CommandType cmdType, string cmdText, DbParameter[] cmdParms)
         {
             if (conn.State != ConnectionState.Open)

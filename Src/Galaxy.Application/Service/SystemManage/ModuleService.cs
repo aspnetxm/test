@@ -4,36 +4,44 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Code;
+using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Domain.IRepository.SystemManage;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Galaxy.Service.SystemManage
 {
-    public class ModuleApp
+    public class ModuleService: IModuleService
     {
-        private IModuleRepository service = new ModuleRepository();
+        private IModuleRepository _moduleRepository;
+        private IUnitOfWork _unitOfWork;
+
+        public ModuleService(IUnitOfWork unitOfWork, IModuleRepository moduleRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _moduleRepository = moduleRepository;
+        }
 
         public List<Module> GetList()
         {
-            return service.IQueryable().OrderBy(t => t.SortCode).ToList();
+            return _moduleRepository.IQueryable().OrderBy(t => t.SortCode).ToList();
         }
         public Module GetForm(string keyValue)
         {
-            return service.Get(keyValue);
+            return _moduleRepository.Get(keyValue);
         }
         public void DeleteForm(string keyValue)
         {
-            if (service.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
+            if (_moduleRepository.IQueryable().Count(t => t.ParentId.Equals(keyValue)) > 0)
             {
                 throw new Exception("删除失败！操作的对象包含了下级数据。");
             }
             else
             {
-                service.Delete(t => t.Id == keyValue);
+                _unitOfWork.Delete<Module>(t => t.Id == keyValue);
             }
         }
         public void SubmitForm(Module moduleEntity, string keyValue)
@@ -41,12 +49,12 @@ namespace Galaxy.Service.SystemManage
             if (!string.IsNullOrEmpty(keyValue))
             {
                 moduleEntity.Modify(keyValue);
-                service.Update(moduleEntity);
+                _unitOfWork.Update(moduleEntity);
             }
             else
             {
                 moduleEntity.Create();
-                service.Insert(moduleEntity);
+                _unitOfWork.Insert(moduleEntity);
             }
         }
     }

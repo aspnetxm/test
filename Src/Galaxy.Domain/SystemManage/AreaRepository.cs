@@ -9,8 +9,12 @@ using Galaxy.Domain.IRepository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
-    public class AreaRepository : RepositoryBase<Area>, IAreaRepository
+    public class AreaRepository :BaseRepository<Area>, IAreaRepository
     {
-        
+        IDbContext _dbContext;
+        public AreaRepository(IDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
     }
 }
