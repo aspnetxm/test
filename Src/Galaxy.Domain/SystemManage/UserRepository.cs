@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 using Galaxy.Code;
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        IDbContext _dbContext;
-        public UserRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public UserRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
- 
+
         //public async Task DeleteAsync(string keyValue)
         //{
         //    _uk.BeginTransaction();

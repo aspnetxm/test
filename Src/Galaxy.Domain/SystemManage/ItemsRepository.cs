@@ -5,16 +5,16 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
     public class ItemsRepository : BaseRepository<Items>, IItemsRepository
     {
-        IDbContext _dbContext;
-        public ItemsRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public ItemsRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
     }
 }

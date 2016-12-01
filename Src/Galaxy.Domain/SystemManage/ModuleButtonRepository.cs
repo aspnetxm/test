@@ -5,28 +5,23 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 using System.Collections.Generic;
 
 namespace Galaxy.Repository.SystemManage
 {
     public class ModuleButtonRepository : BaseRepository<ModuleButton>, IModuleButtonRepository
     {
-        IDbContext _dbContext;
-        public ModuleButtonRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public ModuleButtonRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
         public void SubmitCloneButton(List<ModuleButton> entitys)
         {
-            using (var db = new RepositoryBase().BeginTrans())
+            foreach (var item in entitys)
             {
-
-                foreach (var item in entitys)
-                {
-                    db.Insert(item);
-                }
-                db.Commit();
+                _unitOfWork.Insert(item);
             }
         }
     }

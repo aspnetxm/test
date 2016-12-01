@@ -5,17 +5,17 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Repository.SystemManage
 {
     public class RoleAuthorizeRepository : BaseRepository<RoleAuthorize>, IRoleAuthorizeRepository
     {
-        IDbContext _dbContext;
-        public RoleAuthorizeRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public RoleAuthorizeRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
     }
 }

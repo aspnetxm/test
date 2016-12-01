@@ -40,6 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\BaseRepository.cs" />
+    <Compile Include="Infrastructure\IBaseRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Interface\SystemManage\IAreaRepository.cs" />
+    <Compile Include="Interface\SystemManage\IItemsDetailRepository.cs" />
+    <Compile Include="Interface\SystemManage\IItemsRepository.cs" />
+    <Compile Include="Interface\SystemManage\IModuleButtonRepository.cs" />
+    <Compile Include="Interface\SystemManage\IModuleRepository.cs" />
+    <Compile Include="Interface\SystemManage\IOrganizeRepository.cs" />
+    <Compile Include="Interface\SystemManage\IRoleAuthorizeRepository.cs" />
+    <Compile Include="Interface\SystemManage\IRoleRepository.cs" />
+    <Compile Include="Interface\SystemManage\IUserLogOnRepository.cs" />
+    <Compile Include="Interface\SystemManage\IUserRepository.cs" />
+    <Compile Include="Interface\SystemSecurity\IDbBackupRepository.cs" />
+    <Compile Include="Interface\SystemSecurity\IFilterIPRepository.cs" />
+    <Compile Include="Interface\SystemSecurity\ILogRepository.cs" />
+    <Compile Include="Pagination.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemManage\AreaRepository.cs" />
     <Compile Include="SystemManage\ItemsDetailRepository.cs" />

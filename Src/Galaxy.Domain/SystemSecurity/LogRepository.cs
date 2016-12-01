@@ -5,16 +5,16 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
+using Galaxy.Repository.Interface.SystemSecurity;
 
 namespace Galaxy.Repository.SystemSecurity
 {
     public class LogRepository : BaseRepository<OprLog>, ILogRepository
     {
-        IDbContext _dbContext;
-        public LogRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public LogRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
     }
 }

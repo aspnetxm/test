@@ -6,30 +6,26 @@
 using Galaxy.Data;
 using Galaxy.Data.Extensions;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
+using Galaxy.Repository.Interface.SystemSecurity;
 
 namespace Galaxy.Repository.SystemSecurity
 {
     public class DbBackupRepository : BaseRepository<DbBackup>, IDbBackupRepository
     {
-        IDbContext _dbContext;
-        public DbBackupRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public DbBackupRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public void DeleteForm(string keyValue)
         {
-            using (var db = new RepositoryBase().BeginTrans())
+            var dbBackupEntity = Get(keyValue);
+            if (dbBackupEntity != null)
             {
-                var dbBackupEntity = db.FindEntity<DbBackup>(keyValue);
-                if (dbBackupEntity != null)
-                {
-                    //FileHelper.DeleteFile(dbBackupEntity.FilePath);
-                }
-                db.Delete<DbBackup>(dbBackupEntity);
-                db.Commit();
+                //FileHelper.DeleteFile(dbBackupEntity.FilePath);
             }
+            _unitOfWork.Delete<DbBackup>(dbBackupEntity);
         }
         public void ExecuteDbBackup(DbBackup dbBackupEntity)
         {
@@ -38,7 +34,7 @@ namespace Galaxy.Repository.SystemSecurity
             //dbBackupEntity.FilePath = "/Resource/DbBackup/" + dbBackupEntity.FileName;
             //this.Insert(dbBackupEntity);
 
-           
+
         }
     }
 }

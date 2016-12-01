@@ -11,7 +11,7 @@ namespace Galaxy.Domain.IRepository.SystemManage
 {
     public interface IRoleRepository : IBaseRepository<Role>
     {
-        void DeleteForm(IUnitOfWork uk, string keyValue);
-        void SubmitForm(IUnitOfWork uk, Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue);
+        void DeleteForm(string keyValue);
+        void SubmitForm(Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue);
     }
 }

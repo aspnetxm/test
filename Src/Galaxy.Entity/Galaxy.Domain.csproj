@@ -59,19 +59,6 @@
     <Compile Include="Infrastructure\IDeleteAudited.cs" />
     <Compile Include="Infrastructure\IEntity.cs" />
     <Compile Include="Infrastructure\IModificationAudited.cs" />
-    <Compile Include="IRepository\SystemManage\IAreaRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IItemsDetailRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IItemsRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IModuleButtonRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IModuleRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IOrganizeRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IRoleAuthorizeRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IRoleRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IUserLogOnRepository.cs" />
-    <Compile Include="IRepository\SystemManage\IUserRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\IDbBackupRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\IFilterIPRepository.cs" />
-    <Compile Include="IRepository\SystemSecurity\ILogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

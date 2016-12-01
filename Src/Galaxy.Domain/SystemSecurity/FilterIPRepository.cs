@@ -5,16 +5,16 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
+using Galaxy.Repository.Interface.SystemSecurity;
 
 namespace Galaxy.Repository.SystemSecurity
 {
     public class FilterIPRepository : BaseRepository<FilterIP>, IFilterIPRepository
     {
-        IDbContext _dbContext;
-        public FilterIPRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public FilterIPRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
     }
 }

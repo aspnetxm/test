@@ -5,7 +5,7 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Repository.SystemManage;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -17,10 +17,10 @@ namespace Galaxy.Repository.SystemManage
     public class ItemsDetailRepository : BaseRepository<ItemsDetail>, IItemsDetailRepository
     {
 
-        IDbContext _dbContext;
-        public ItemsDetailRepository(IDbContext dbContext) : base(dbContext)
+        IUnitOfWork _unitOfWork;
+        public ItemsDetailRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public List<ItemsDetail> GetItemList(string enCode)

@@ -3,13 +3,13 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Code;
-using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Galaxy.Data;
-using Galaxy.Service.Interfaces;
+using Galaxy.Code;
+using Galaxy.Service;
+using Galaxy.Service.SystemManage;
+using Galaxy.Domain.Entity.SystemManage;
 
 
 namespace Galaxy.Web.Areas.SystemManage.Controllers
@@ -17,7 +17,6 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
-       // private UserLogOnApp userLogOnApp = new UserLogOnApp();
 
         public UserController(IUserService userService)
         {
@@ -26,7 +25,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 
         [HttpGet]
         [HandlerAjaxOnly]
-        public ActionResult GetGridJson(Pagination pagination, string keyword)
+        public ActionResult GetGridJson(PagerInfo pagination, string keyword)
         {
             var data = new
             {
@@ -37,6 +36,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
             };
             return Content(data.ToJson());
         }
+
         [HttpGet]
         [HandlerAjaxOnly]
         public ActionResult GetFormJson(string keyValue)

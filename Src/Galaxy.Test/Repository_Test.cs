@@ -5,7 +5,7 @@ using System.Threading;
 using Xunit;
 using Moq;
 
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Data;
 using Galaxy.Code;
@@ -73,39 +73,6 @@ namespace Galaxy.Test
         //    Assert.Equal(null, newu);
         //}
 
-        [Fact]
-        public void TR_Test()
-        {
-            var t = new Task(() =>
-              {
-                  using (var rb = new RepositoryBase().BeginTrans())
-                  {
-                      User ue = rb.FindEntity<User>("60c36787-4b75-4ff1-8c0e-fdef76fc7ffc");
-                      ue.ManagerId = "aaaa";
-                      rb.Update<User>(ue);
-                    //Thread.Sleep(5000);
-                    rb.Commit();
-                      Console.WriteLine("aa");
-
-                  }
-              });
-            t.Start();
-
-            new Task(() =>
-            {
-                using (var rb = new RepositoryBase().BeginTrans())
-                {
-                    User ue = rb.FindEntity<User>("60c36787-4b75-4ff1-8c0e-fdef76fc7ffc");
-                    rb.Delete<User>(ue);
-                    Thread.Sleep(3000);
-                    rb.Commit();
-                    Console.WriteLine("bb");
-                }
-            }).Start();
-
-
-
-            Console.WriteLine("ok");
-        }
+      
     }
 }

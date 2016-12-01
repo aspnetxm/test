@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Galaxy.Web.Models;
 using Galaxy.Code;
-using Galaxy.Service.Interfaces;
+using Galaxy.Service.SystemManage;
 
 namespace Galaxy.Web.Controllers
 {

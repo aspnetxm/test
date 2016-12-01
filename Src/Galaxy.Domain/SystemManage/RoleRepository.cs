@@ -5,36 +5,39 @@
 *********************************************************************************/
 using Galaxy.Data;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Domain.IRepository.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
 using System.Collections.Generic;
 
 namespace Galaxy.Repository.SystemManage
 {
     public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
-        IDbContext _dbContext;
-        public RoleRepository(IDbContext dbContext) : base(dbContext)
+
+        IUnitOfWork _unitOfWork;
+        public RoleRepository(IUnitOfWork unitOfWork) : base(unitOfWork.DbContext)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
-        public void DeleteForm(IUnitOfWork uk, string keyValue)
+
+        public void DeleteForm(string keyValue)
         {
-            uk.Delete<Role>(t => t.Id == keyValue);
-            uk.Delete<RoleAuthorize>(t => t.ObjectId == keyValue);
+            _unitOfWork.Delete<Role>(t => t.Id == keyValue);
+            _unitOfWork.Delete<RoleAuthorize>(t => t.ObjectId == keyValue);
         }
-        public void SubmitForm(IUnitOfWork uk, Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue)
+
+        public void SubmitForm(Role roleEntity, List<RoleAuthorize> roleAuthorizeEntitys, string keyValue)
         {
             if (!string.IsNullOrEmpty(keyValue))
             {
-                uk.Update(roleEntity);
+                _unitOfWork.Update(roleEntity);
             }
             else
             {
                 roleEntity.Category = 1;
-                uk.Insert(roleEntity);
+                _unitOfWork.Insert(roleEntity);
             }
-            uk.Delete<RoleAuthorize>(t => t.ObjectId == roleEntity.Id);
-            uk.Insert(roleAuthorizeEntitys);
+            _unitOfWork.Delete<RoleAuthorize>(t => t.ObjectId == roleEntity.Id);
+            _unitOfWork.Insert(roleAuthorizeEntitys);
         }
     }
 }
