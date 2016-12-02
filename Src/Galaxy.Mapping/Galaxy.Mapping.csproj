@@ -69,10 +69,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Galaxy.Domain\Galaxy.Repository.csproj">
-      <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
-      <Name>Galaxy.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Galaxy.Entity\Galaxy.Domain.csproj">
       <Project>{2037457d-3243-4e01-985a-9d236f693870}</Project>
       <Name>Galaxy.Domain</Name>

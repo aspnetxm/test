@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Data;
-using Galaxy.Service.SystemManage;
+using Galaxy.Repository.Infrastructure;
 
 
 namespace Galaxy.Service.SystemManage

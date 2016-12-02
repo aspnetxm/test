@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\SystemManage\AuthorizeAction.cs" />
-    <Compile Include="Dto\SystemManage\UserVerifyResult.cs" />
     <Compile Include="Entity\SystemManage\Area.cs" />
     <Compile Include="Entity\SystemManage\ItemsDetail.cs" />
     <Compile Include="Entity\SystemManage\Items.cs" />
@@ -60,12 +58,6 @@
     <Compile Include="Infrastructure\IEntity.cs" />
     <Compile Include="Infrastructure\IModificationAudited.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Galaxy.Data\Galaxy.Data.csproj">
-      <Project>{567bbddf-31a1-46f8-a1fe-2fa918a8f14c}</Project>
-      <Name>Galaxy.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

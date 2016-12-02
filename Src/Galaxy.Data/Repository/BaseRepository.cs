@@ -135,8 +135,6 @@ namespace Galaxy.Data
             pagination.records = tempData.Count();
             tempData = tempData.Skip<TEntity>(pagination.rows * (pagination.page - 1)).Take<TEntity>(pagination.rows).AsQueryable();
 
-
-            Pagination1 
             return await tempData.ToListAsync();
         }
 

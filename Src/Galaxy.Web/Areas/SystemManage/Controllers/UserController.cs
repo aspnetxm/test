@@ -25,7 +25,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
 
         [HttpGet]
         [HandlerAjaxOnly]
-        public ActionResult GetGridJson(PagerInfo pagination, string keyword)
+        public ActionResult GetGridJson(Pagination pagination, string keyword)
         {
             var data = new
             {

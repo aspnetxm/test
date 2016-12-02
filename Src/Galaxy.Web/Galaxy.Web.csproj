@@ -399,13 +399,9 @@
       <Project>{975b5b1a-9e54-47c6-8c7c-da109ddcdea7}</Project>
       <Name>Galaxy.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Code\Galaxy.Code.csproj">
+    <ProjectReference Include="..\Galaxy.Code\Galaxy.Utility.csproj">
       <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>
-      <Name>Galaxy.Code</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Domain\Galaxy.Repository.csproj">
-      <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
-      <Name>Galaxy.Repository</Name>
+      <Name>Galaxy.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.Entity\Galaxy.Domain.csproj">
       <Project>{2037457d-3243-4e01-985a-9d236f693870}</Project>

@@ -5,9 +5,8 @@
 *********************************************************************************/
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
-using Galaxy.Repository.SystemSecurity;
-using Galaxy.Data;
+using Galaxy.Repository.Interface.SystemSecurity;
+using Galaxy.Repository.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,10 +1,8 @@
-﻿using Galaxy.Service.SystemManage;
-using Galaxy.Code;
+﻿using Galaxy.Code;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Galaxy.Data;
-using Galaxy.Repository.SystemManage;
+using Galaxy.Service.SystemManage;
 
 namespace Galaxy.Web
 {
@@ -15,6 +13,7 @@ namespace Galaxy.Web
         {
             Ignore = ignore;
         }
+
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
@@ -48,10 +47,10 @@ namespace Galaxy.Web
             var moduleId = WebHelper.GetCookie("Galaxy_currentmoduleid");
             var action = HttpContext.Current.Request.ServerVariables["SCRIPT_NAME"].ToString();
 
-    
-            IUnitOfWork unitOfWork =new UnitOfWork();
+            return new RoleAuthorizeService().ActionValidate(roleId, moduleId, action);
 
-            return new RoleAuthorizeService(unitOfWork, new RoleAuthorizeRepository(unitOfWork), new ModuleButtonRepository(unitOfWork), new ModuleRepository(unitOfWork)).ActionValidate(roleId, moduleId, action);
+            //IUnitOfWork unitOfWork =new UnitOfWork();
+            //return new RoleAuthorizeService(unitOfWork, new RoleAuthorizeRepository(unitOfWork), new ModuleButtonRepository(unitOfWork), new ModuleRepository(unitOfWork)).ActionValidate(roleId, moduleId, action);
         }
     }
 }

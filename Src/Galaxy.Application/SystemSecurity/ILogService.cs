@@ -6,11 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
-using Galaxy.Data;
+using Galaxy.Repository.Infrastructure;
 
 
 namespace Galaxy.Service.SystemManage

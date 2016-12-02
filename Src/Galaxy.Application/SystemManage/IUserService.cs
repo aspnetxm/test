@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Galaxy.Domain.Dto;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Data;
+using Galaxy.Repository.Infrastructure;
+
 
 namespace Galaxy.Service.SystemManage
 {
@@ -17,7 +18,7 @@ namespace Galaxy.Service.SystemManage
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        Task<UserVerifyResult> Verification(string username, string password);
+        Task<UserVerifyDTO> Verification(string username, string password);
 
         /// <summary>
         /// 
@@ -25,7 +26,7 @@ namespace Galaxy.Service.SystemManage
         /// <param name="pagination"></param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        Task<List<User>> GetList(PagerInfo pagination, string keyword);
+        Task<List<User>> GetList(Pagination pagination, string keyword);
 
         /// <summary>
         /// 

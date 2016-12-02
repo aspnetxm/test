@@ -5,8 +5,7 @@
 *********************************************************************************/
 using Galaxy.Domain.Entity.SystemManage;
 using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Service.SystemManage;
-using Galaxy.Data;
+using Galaxy.Repository.Infrastructure;
 
 using System;
 using System.Collections.Generic;

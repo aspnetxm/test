@@ -6,12 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Galaxy.Code;
-using Galaxy.Data;
 using Galaxy.Domain.Dto;
-using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Repository.SystemManage;
 
 namespace Galaxy.Service.SystemManage
 {

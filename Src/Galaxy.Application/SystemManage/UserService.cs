@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Galaxy.Data;
+using Galaxy.Repository.Infrastructure;
 using Galaxy.Code;
 using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Domain.Dto;
@@ -29,9 +29,9 @@ namespace Galaxy.Service.SystemManage
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public async Task<UserVerifyResult> Verification(string username, string password)
+        public async Task<UserVerifyDTO> Verification(string username, string password)
         {
-            UserVerifyResult result = new UserVerifyResult { IsSuc = false };
+            UserVerifyDTO result = new UserVerifyDTO { IsSuc = false };
 
             User user = await _userRepository.GetAsync(t => t.Account == username || t.Email == username);
             if (user == null)
@@ -68,7 +68,7 @@ namespace Galaxy.Service.SystemManage
             return result;
         }
 
-        public async Task<List<User>> GetList(PagerInfo pagination, string keyword)
+        public async Task<List<User>> GetList(Pagination pagination, string keyword)
         {
             var expression = LinqExt.True<User>();
             if (!string.IsNullOrEmpty(keyword))

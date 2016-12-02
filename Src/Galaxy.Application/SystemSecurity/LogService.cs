@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 using Galaxy.Code;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Domain.IRepository.SystemSecurity;
-using Galaxy.Data;
+using Galaxy.Repository.Infrastructure;
+using Galaxy.Repository.Interface.SystemSecurity;
 
 
 namespace Galaxy.Service.SystemSecurity
