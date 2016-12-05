@@ -10,7 +10,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class Captcha
     {

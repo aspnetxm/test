@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Galaxy.Repository.Infrastructure;
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Domain.Dto;
 using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.DTO.CommonModule;
+using Galaxy.DTO.SystemManage;
 
 namespace Galaxy.Service.SystemManage
 {
@@ -103,7 +104,6 @@ namespace Galaxy.Service.SystemManage
                 _unitOfWork.BeginTransaction();
                 await _unitOfWork.UpdateAsync<User>(userEntity);
                 await _unitOfWork.UpdateAsync<UserLogOn>(userLogOnEntity);
-                await _unitOfWork.CommitAsync();
             }
             else
             {
@@ -115,8 +115,9 @@ namespace Galaxy.Service.SystemManage
                 _unitOfWork.BeginTransaction();
                 await _unitOfWork.InsertAsync<User>(userEntity);
                 await _unitOfWork.InsertAsync<UserLogOn>(userLogOnEntity);
-                await _unitOfWork.CommitAsync();
             }
+
+            await _unitOfWork.CommitAsync();
         }
     }
 }

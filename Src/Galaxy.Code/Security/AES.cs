@@ -8,7 +8,7 @@ using System;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class AES
     {

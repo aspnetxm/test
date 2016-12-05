@@ -5,7 +5,7 @@
 *********************************************************************************/
 using NLog;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class Log
     {

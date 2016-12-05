@@ -4,7 +4,7 @@
  * 修改记录： 
 *********************************************************************************/
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class CacheFactory
     {

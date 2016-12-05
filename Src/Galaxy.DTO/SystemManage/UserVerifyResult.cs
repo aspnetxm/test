@@ -6,7 +6,7 @@
 
 using Galaxy.Domain.Entity.SystemManage;
 
-namespace Galaxy.Domain.Dto
+namespace Galaxy.DTO.SystemManage
 {
     public class UserVerifyDTO
     {

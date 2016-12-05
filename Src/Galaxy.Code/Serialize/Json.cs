@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public static class Json
     {

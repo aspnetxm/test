@@ -5,17 +5,16 @@ using System.Threading;
 using Xunit;
 using Moq;
 
-using Galaxy.Repository.Interface.SystemManage;
+
 using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Data;
-using Galaxy.Code;
+using Galaxy.Repository.Interface.SystemManage;
+using Galaxy.Utility;
+using Galaxy.Service.SystemManage;
 
 namespace Galaxy.Test
 {
     public class UnitTest1
     {
-
-
 
         [Fact(DisplayName = "Repository_Insert")]
         public void Test_Insert()
@@ -40,11 +39,16 @@ namespace Galaxy.Test
             };
 
             var mock = new Mock<IUserRepository>();
-
-             
-
-
             mock.Setup(o => o.Get(user.Id)).Returns(user);
+
+
+
+
+
+
+            
+
+
 
             //Assert.NotNull(u);
         }
@@ -72,7 +76,5 @@ namespace Galaxy.Test
 
         //    Assert.Equal(null, newu);
         //}
-
-      
     }
 }

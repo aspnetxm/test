@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Galaxy.Web.Models;
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Service.SystemManage;
 
 namespace Galaxy.Web.Controllers
@@ -36,36 +36,43 @@ namespace Galaxy.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return Json(new { state = "error", message = ModelState.ToError() });
+                if (!ModelState.IsValid)
+                {
+                    return Json(new { state = "error", message = ModelState.ToError() });
+                }
+
+                var r = await _userService.Verification(model.UserName, model.Password);
+                if (!r.IsSuc)
+                {
+                    return Json(new { state = "error", message = r.Error });
+                }
+
+                //登录成功 
+                ClaimsIdentity identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
+                identity.AddClaim(new Claim(ClaimTypes.Name, r.User.Account));
+                identity.AddClaim(new Claim(ClaimTypes.Sid, r.User.Id));
+                identity.AddClaim(new Claim("DisplayName", r.User.NickName));
+                OperatorModel operatorMode = new OperatorModel
+                {
+                    IsSystem = r.User.IsAdministrator == true,
+                    UserId = r.User.Id,
+                    RoleId = r.User.RoleId,
+                    UserName = r.User.Account,
+                    LoginTime = DateTime.Now,
+                    LoginIPAddress = ""
+                };
+                identity.AddClaim(new Claim(ClaimTypes.UserData, operatorMode.ToJson()));
+
+                AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+
+                return Json(new { state = "success", message = "登录成功。", returnUrl = GetRedirectToLocal(returnUrl) });
             }
-
-            var r = await _userService.Verification(model.UserName, model.Password);
-            if (!r.IsSuc)
+            catch (Exception exc)
             {
-                return Json(new { state = "error", message = r.Error });
+                return Json(new { state = "error", message = exc.Message });
             }
-
-            //登录成功 
-            ClaimsIdentity identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
-            identity.AddClaim(new Claim(ClaimTypes.Name, r.User.Account));
-            identity.AddClaim(new Claim(ClaimTypes.Sid, r.User.Id));
-            identity.AddClaim(new Claim("DisplayName", r.User.NickName));
-            OperatorModel operatorMode = new OperatorModel
-            {
-                IsSystem = r.User.IsAdministrator == true,
-                UserId = r.User.Id,
-                RoleId = r.User.RoleId,
-                UserName = r.User.Account,
-                LoginTime = DateTime.Now,
-                LoginIPAddress = ""
-            };
-            identity.AddClaim(new Claim(ClaimTypes.UserData, operatorMode.ToJson()));
-
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-
-            return Json(new { state = "success", message = "登录成功。", returnUrl = GetRedirectToLocal(returnUrl) });
         }
 
         //

@@ -103,6 +103,10 @@
       <Project>{f70f96ea-f8fb-4834-bb51-170bc9661da2}</Project>
       <Name>Galaxy.Mapping</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Galaxy.Repository\Galaxy.Repository.csproj">
+      <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
+      <Name>Galaxy.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

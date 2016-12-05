@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class EMail
     {

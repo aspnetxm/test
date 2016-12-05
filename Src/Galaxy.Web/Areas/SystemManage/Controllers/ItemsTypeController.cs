@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Service.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;

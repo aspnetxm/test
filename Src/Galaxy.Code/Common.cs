@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     /// <summary>
     /// 常用公共类

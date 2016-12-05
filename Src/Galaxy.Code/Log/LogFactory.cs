@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using NLog;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class LogFactory
     {

@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.Caching;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class MemoryCache : ICache
     {

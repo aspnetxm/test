@@ -6,7 +6,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class Md5Encrypt
     {

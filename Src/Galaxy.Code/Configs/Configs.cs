@@ -6,7 +6,7 @@
 using System;
 using System.Configuration;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class Configs
     {

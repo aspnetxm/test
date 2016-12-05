@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
-using Galaxy.Code;
+using Galaxy.Utility;
 
 namespace Galaxy.Web
 {

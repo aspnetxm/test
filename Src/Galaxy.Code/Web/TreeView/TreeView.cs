@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public static class TreeView
     {

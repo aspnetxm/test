@@ -11,7 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class WebHelper
     {

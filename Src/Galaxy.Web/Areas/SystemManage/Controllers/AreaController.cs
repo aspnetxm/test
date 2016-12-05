@@ -4,7 +4,7 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Service.SystemManage;
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Domain.Entity.SystemManage;
 using System.Collections.Generic;
 using System.Linq;

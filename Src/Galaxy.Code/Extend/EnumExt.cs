@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public static class EnumExt
     {

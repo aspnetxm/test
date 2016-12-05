@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Repository.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;

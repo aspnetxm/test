@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Repository.Infrastructure;
+using Galaxy.DTO.CommonModule;
 
 
 namespace Galaxy.Service.SystemManage

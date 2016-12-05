@@ -5,7 +5,7 @@
 *********************************************************************************/
 using System;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public interface ICache
     {

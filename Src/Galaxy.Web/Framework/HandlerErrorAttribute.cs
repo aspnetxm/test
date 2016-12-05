@@ -1,4 +1,4 @@
-﻿using Galaxy.Code;
+﻿using Galaxy.Utility;
 using System.Web.Mvc;
 
 namespace Galaxy.Web

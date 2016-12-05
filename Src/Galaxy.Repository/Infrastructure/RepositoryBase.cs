@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
 using Galaxy.Repository.Infrastructure.Data;
+using Galaxy.DTO.CommonModule;
 
 namespace Galaxy.Repository.Infrastructure
 {

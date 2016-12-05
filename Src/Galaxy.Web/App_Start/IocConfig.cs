@@ -15,9 +15,9 @@ namespace Galaxy.Web
         {
             var builder = new ContainerBuilder();
 
-            var domainServices = Assembly.Load("Galaxy.Domain");
+            var domainServices = Assembly.Load("Galaxy.Repository");
             builder.RegisterAssemblyTypes(domainServices, domainServices)
-              .Where(t => t.Name.EndsWith("Repository"))
+              .Where(t => t.Name.EndsWith("Repository") || t.Name.EndsWith("UnitOfWork"))
               .AsImplementedInterfaces().PropertiesAutowired();
 
             var appServices = Assembly.Load("Galaxy.Service");

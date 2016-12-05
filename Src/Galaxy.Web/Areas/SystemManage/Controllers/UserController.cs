@@ -6,10 +6,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Galaxy.Code;
+using Galaxy.Utility;
 using Galaxy.Service;
 using Galaxy.Service.SystemManage;
 using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.DTO.CommonModule;
 
 
 namespace Galaxy.Web.Areas.SystemManage.Controllers
@@ -17,10 +18,12 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
+        private IUserLogOnServic _userLogOnServic;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IUserLogOnServic userLogOnServic)
         {
             _userService = userService;
+            _userLogOnServic = userLogOnServic;
         }
 
         [HttpGet]
@@ -72,7 +75,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitRevisePassword(string userPassword, string keyValue)
         {
-            //userLogOnApp.RevisePassword(userPassword, keyValue);
+            _userLogOnServic.RevisePassword(userPassword, keyValue);
             return Success("重置密码成功。");
         }
         [HttpPost]
@@ -96,7 +99,7 @@ namespace Galaxy.Web.Areas.SystemManage.Controllers
             User userEntity = new User();
             userEntity.Id = keyValue;
             userEntity.EnabledMark = true;
-           // _userService.UpdateForm(userEntity);
+            //_userService.SubmitForm(userEntity);
             return Success("账户启用成功。");
         }
 

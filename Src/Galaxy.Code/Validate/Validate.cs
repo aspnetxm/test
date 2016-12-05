@@ -7,7 +7,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Galaxy.Code
+namespace Galaxy.Utility
 {
     public class Validate
     {
