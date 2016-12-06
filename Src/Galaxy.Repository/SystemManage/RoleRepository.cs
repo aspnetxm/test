@@ -4,8 +4,8 @@
  * 修改记录： 
 *********************************************************************************/
 using System.Collections.Generic;
-using Galaxy.Repository.Infrastructure;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Data.Infrastructure;
+using Galaxy.Entity.SystemManage;
 using Galaxy.Repository.Interface.SystemManage;
 
 

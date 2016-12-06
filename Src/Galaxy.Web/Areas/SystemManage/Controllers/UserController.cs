@@ -7,10 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Galaxy.Utility;
-using Galaxy.Service;
 using Galaxy.Service.SystemManage;
-using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.DTO.CommonModule;
+using Galaxy.Entity.SystemManage;
+using Galaxy.Infrastructure;
 
 
 namespace Galaxy.Web.Areas.SystemManage.Controllers

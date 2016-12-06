@@ -4,20 +4,25 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemManage
+namespace Galaxy.Entity.SystemManage
 {
-    public class ItemsDetail : IEntity<ItemsDetail>, ICreationAudited, IDeleteAudited, IModificationAudited
+    public class Module : IEntity<Module>, ICreationAudited, IModificationAudited, IDeleteAudited
     {
         public string Id { get; set; }
-        public string ItemId { get; set; }
         public string ParentId { get; set; }
-        public string ItemCode { get; set; }
-        public string ItemName { get; set; }
-        public string SimpleSpelling { get; set; }
-        public bool? IsDefault { get; set; }
         public int? Layers { get; set; }
+        public string EnCode { get; set; }
+        public string FullName { get; set; }
+        public string Icon { get; set; }
+        public string UrlAddress { get; set; }
+        public string Target { get; set; }
+        public bool? IsMenu { get; set; }
+        public bool? IsExpand { get; set; }
+        public bool? IsPublic { get; set; }
+        public bool? AllowEdit { get; set; }
+        public bool? AllowDelete { get; set; }
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }

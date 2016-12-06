@@ -4,51 +4,40 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemManage
+namespace Galaxy.Entity.SystemManage
 {
     /// <summary>
-    /// 角色表
+    /// 组织表
     /// </summary>
-    public class Role : IEntity<Role>, ICreationAudited, IDeleteAudited, IModificationAudited
+    public class Organize : IEntity<Organize>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string Id { get; set; }
-        /// <summary>
-        /// 组织主键
-        /// </summary>
-        public string OrganizeId { get; set; }
-        /// <summary>
-        /// 分类:1-角色 2-岗位
-        /// </summary>
-        public int? Category { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        public string ParentId { get; set; }
+        public int? Layers { get; set; }
         public string EnCode { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string FullName { get; set; }
+        public string ShortName { get; set; }
+        public string CategoryId { get; set; }
         /// <summary>
-        /// 类型
+        /// 主管主键
         /// </summary>
-        public string Type { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        public string ManagerId { get; set; }
+        public string TelePhone { get; set; }
+        public string MobilePhone { get; set; }
+        public string WeChat { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string AreaId { get; set; }
+        public string Address { get; set; }
         public bool? AllowEdit { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public bool? AllowDelete { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }
         public string Description { get; set; }
+
 
 
         public DateTime? CreatorTime { get; set; }

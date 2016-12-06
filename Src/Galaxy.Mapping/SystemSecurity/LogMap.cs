@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Entity.SystemSecurity;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemSecurity
@@ -12,7 +12,7 @@ namespace Galaxy.Mapping.SystemSecurity
     {
         public OprLogMap()
         {
-            this.ToTable("Sys_OprLog");
+            this.ToTable("OprLog");
             this.HasKey(t => t.Id);
         }
     }

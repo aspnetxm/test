@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Galaxy.Repository.Infrastructure;
+using Galaxy.Data.Infrastructure;
 using Galaxy.Utility;
 using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.DTO.CommonModule;
+using Galaxy.Entity.SystemManage;
+using Galaxy.Infrastructure;
 using Galaxy.DTO.SystemManage;
 
 namespace Galaxy.Service.SystemManage
@@ -54,6 +54,8 @@ namespace Galaxy.Service.SystemManage
                 return result;
             }
 
+            //userLogOnEntity.UserPassword = dbPassword;
+
             DateTime lastVisitTime = DateTime.Now;
             int LogOnCount = userLogOnEntity.LogOnCount ?? +1;
             if (userLogOnEntity.LastVisitTime != null)
@@ -62,10 +64,10 @@ namespace Galaxy.Service.SystemManage
             }
             userLogOnEntity.LastVisitTime = lastVisitTime;
             userLogOnEntity.LogOnCount = LogOnCount;
-            //_logOnRepository.Update(userLogOnEntity);
-            await _unitOfWork.UpdateAsync<UserLogOn>(userLogOnEntity);
+            await _unitOfWork.UpdateAsync(userLogOnEntity);
             await _unitOfWork.CommitAsync();
             result.User = user;
+            result.IsSuc = true;
             return result;
         }
 

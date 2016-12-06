@@ -1,9 +1,9 @@
 ﻿/*******************************************************************************
- * 作者：星星    Galaxy.Domain.Entity.SystemManage;
+ * 作者：星星    Galaxy.Entity.SystemManage;
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Entity.SystemSecurity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

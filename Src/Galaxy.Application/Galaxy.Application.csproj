@@ -71,21 +71,29 @@
     <Compile Include="SystemSecurity\LogService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Galaxy.Code\Galaxy.Utility.csproj">
-      <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>
-      <Name>Galaxy.Utility</Name>
+    <ProjectReference Include="..\Galaxy.Data\Galaxy.Data.csproj">
+      <Project>{a48190d0-724e-45c3-bb9d-a46dfff853eb}</Project>
+      <Name>Galaxy.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.DTO\Galaxy.DTO.csproj">
       <Project>{2e95cd2a-22ba-4d4e-8fce-d26e4845ee49}</Project>
       <Name>Galaxy.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Entity\Galaxy.Domain.csproj">
+    <ProjectReference Include="..\Galaxy.Entity\Galaxy.Entity.csproj">
       <Project>{2037457d-3243-4e01-985a-9d236f693870}</Project>
-      <Name>Galaxy.Domain</Name>
+      <Name>Galaxy.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galaxy.Infrastructure\Galaxy.Infrastructure.csproj">
+      <Project>{07d05225-a23b-4b82-8d56-d163a79f3519}</Project>
+      <Name>Galaxy.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.Repository\Galaxy.Repository.csproj">
       <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
       <Name>Galaxy.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galaxy.Utility\Galaxy.Utility.csproj">
+      <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>
+      <Name>Galaxy.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

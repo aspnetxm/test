@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 
 namespace Galaxy.Service.SystemManage
 {

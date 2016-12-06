@@ -5,7 +5,7 @@
 *********************************************************************************/
 using System;
 
-namespace Galaxy.Domain.Infrastructure
+namespace Galaxy.Entity.Infrastructure
 {
     public class IEntity<TEntity>
     {

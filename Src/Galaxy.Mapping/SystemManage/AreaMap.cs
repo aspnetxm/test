@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
@@ -12,7 +12,7 @@ namespace Galaxy.Mapping.SystemManage
     {
         public AreaMap()
         {
-            this.ToTable("Sys_Area");
+            this.ToTable("Area");
             this.HasKey(t => t.Id);
         }
     }

@@ -9,8 +9,8 @@ using System.Linq;
 using Galaxy.Utility;
 using Galaxy.Repository.Interface.SystemManage;
 using Galaxy.Repository.SystemManage;
-using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Repository.Infrastructure;
+using Galaxy.Entity.SystemManage;
+using Galaxy.Data.Infrastructure;
 using Galaxy.DTO.SystemManage;
 
 

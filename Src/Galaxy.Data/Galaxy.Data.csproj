@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{567BBDDF-31A1-46F8-A1FE-2FA918A8F14C}</ProjectGuid>
+    <ProjectGuid>{A48190D0-724E-45C3-BB9D-A46DFFF853EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Galaxy.Data</RootNamespace>
@@ -50,18 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbContext\GalaxyDbContext.cs" />
-    <Compile Include="DbContext\IDbContext.cs" />
-    <Compile Include="Extensions\DbHelper.cs" />
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="GalaxyDbContext.cs" />
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="Infrastructure\IRepositoryBase.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\BaseRepository.cs" />
-    <Compile Include="Repository\IBaseRepository.cs" />
-    <Compile Include="Repository\IUnitOfWork.cs" />
-    <Compile Include="Repository\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Galaxy.Infrastructure\Galaxy.Infrastructure.csproj">
+      <Project>{07d05225-a23b-4b82-8d56-d163a79f3519}</Project>
+      <Name>Galaxy.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,8 +4,8 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Utility;
-using Galaxy.Repository.Infrastructure;
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Data.Infrastructure;
+using Galaxy.Entity.SystemSecurity;
 using Galaxy.Repository.Interface.SystemSecurity;
 using System.Collections.Generic;
 using System.Linq;

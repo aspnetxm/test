@@ -4,23 +4,27 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemSecurity
+namespace Galaxy.Entity.SystemManage
 {
-    public class DbBackup : ICreationAudited, IDeleteAudited, IModificationAudited
+    public class ItemsDetail : IEntity<ItemsDetail>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string Id { get; set; }
-        public string BackupType { get; set; }
-        public string DbName { get; set; }
-        public string FileName { get; set; }
-        public string FileSize { get; set; }
-        public string FilePath { get; set; }
-        public DateTime? BackupTime { get; set; }
+        public string ItemId { get; set; }
+        public string ParentId { get; set; }
+        public string ItemCode { get; set; }
+        public string ItemName { get; set; }
+        public string SimpleSpelling { get; set; }
+        public bool? IsDefault { get; set; }
+        public int? Layers { get; set; }
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }
         public string Description { get; set; }
+
+
+
         public DateTime? CreatorTime { get; set; }
         public string CreatorUserId { get; set; }
         public DateTime? LastModifyTime { get; set; }

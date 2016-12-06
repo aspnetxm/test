@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
@@ -12,7 +12,7 @@ namespace Galaxy.Mapping.SystemManage
     {
         public ItemsDetailMap()
         {
-            this.ToTable("Sys_ItemsDetail");
+            this.ToTable("ItemsDetail");
             this.HasKey(t => t.Id);
         }
     }

@@ -4,9 +4,9 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemManage
+namespace Galaxy.Entity.SystemManage
 {
     /// <summary>
     /// 用户登录信息表

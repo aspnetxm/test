@@ -4,30 +4,51 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemManage
+namespace Galaxy.Entity.SystemManage
 {
-    public class Module : IEntity<Module>, ICreationAudited, IModificationAudited, IDeleteAudited
+    /// <summary>
+    /// 角色表
+    /// </summary>
+    public class Role : IEntity<Role>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string Id { get; set; }
-        public string ParentId { get; set; }
-        public int? Layers { get; set; }
+        /// <summary>
+        /// 组织主键
+        /// </summary>
+        public string OrganizeId { get; set; }
+        /// <summary>
+        /// 分类:1-角色 2-岗位
+        /// </summary>
+        public int? Category { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string EnCode { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string FullName { get; set; }
-        public string Icon { get; set; }
-        public string UrlAddress { get; set; }
-        public string Target { get; set; }
-        public bool? IsMenu { get; set; }
-        public bool? IsExpand { get; set; }
-        public bool? IsPublic { get; set; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public string Type { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool? AllowEdit { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool? AllowDelete { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }
         public string Description { get; set; }
-
 
 
         public DateTime? CreatorTime { get; set; }

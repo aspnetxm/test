@@ -3,9 +3,9 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
+using Galaxy.Entity.SystemManage;
 
 namespace Galaxy.Service.SystemManage
 {

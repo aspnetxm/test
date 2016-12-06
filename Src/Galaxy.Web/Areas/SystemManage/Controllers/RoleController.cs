@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 using Galaxy.Utility;
 using Galaxy.Service.SystemManage;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 
 namespace Galaxy.Web.Areas.SystemManage.Controllers
 {

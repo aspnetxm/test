@@ -1,12 +1,12 @@
 ﻿/*******************************************************************************
- * 作者：星星    Galaxy.Domain.Entity.SystemManage;
+ * 作者：星星    Galaxy.Entity.SystemManage;
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Utility;
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Entity.SystemSecurity;
 using Galaxy.Repository.Interface.SystemSecurity;
-using Galaxy.Repository.Infrastructure;
+using Galaxy.Data.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

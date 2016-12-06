@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Entity.SystemSecurity;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemSecurity
@@ -12,7 +12,7 @@ namespace Galaxy.Mapping.SystemSecurity
     {
         public FilterIPMap()
         {
-            this.ToTable("Sys_FilterIP");
+            this.ToTable("FilterIP");
             this.HasKey(t => t.Id);
         }
     }

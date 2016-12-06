@@ -4,18 +4,18 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemManage
+namespace Galaxy.Entity.SystemManage
 {
-    public class Items : IEntity<Items>, ICreationAudited, IDeleteAudited, IModificationAudited
+    public class Area : IEntity<Area>, ICreationAudited, IDeleteAudited, IModificationAudited
     {
         public string Id { get; set; }
         public string ParentId { get; set; }
+        public int? Layers { get; set; }
         public string EnCode { get; set; }
         public string FullName { get; set; }
-        public bool? IsTree { get; set; }
-        public int? Layers { get; set; }
+        public string SimpleSpelling { get; set; }
         public int? SortCode { get; set; }
         public bool? DeleteMark { get; set; }
         public bool? EnabledMark { get; set; }

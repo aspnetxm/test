@@ -91,13 +91,13 @@
       <Project>{975b5b1a-9e54-47c6-8c7c-da109ddcdea7}</Project>
       <Name>Galaxy.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Code\Galaxy.Utility.csproj">
-      <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>
-      <Name>Galaxy.Utility</Name>
+    <ProjectReference Include="..\Galaxy.Data\Galaxy.Data.csproj">
+      <Project>{a48190d0-724e-45c3-bb9d-a46dfff853eb}</Project>
+      <Name>Galaxy.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galaxy.Entity\Galaxy.Domain.csproj">
+    <ProjectReference Include="..\Galaxy.Entity\Galaxy.Entity.csproj">
       <Project>{2037457d-3243-4e01-985a-9d236f693870}</Project>
-      <Name>Galaxy.Domain</Name>
+      <Name>Galaxy.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galaxy.Mapping\Galaxy.Mapping.csproj">
       <Project>{f70f96ea-f8fb-4834-bb51-170bc9661da2}</Project>
@@ -106,6 +106,10 @@
     <ProjectReference Include="..\Galaxy.Repository\Galaxy.Repository.csproj">
       <Project>{83c1c280-99a4-417c-be22-bcdd1c0ba732}</Project>
       <Name>Galaxy.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galaxy.Utility\Galaxy.Utility.csproj">
+      <Project>{c137cd23-0d12-4ada-a43f-f073dffe58a4}</Project>
+      <Name>Galaxy.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

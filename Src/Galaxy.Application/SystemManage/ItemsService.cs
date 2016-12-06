@@ -3,13 +3,12 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
-using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Repository.Infrastructure;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Galaxy.Entity.SystemManage;
+using Galaxy.Repository.Interface.SystemManage;
+using Galaxy.Data.Infrastructure;
 
 namespace Galaxy.Service.SystemManage
 {

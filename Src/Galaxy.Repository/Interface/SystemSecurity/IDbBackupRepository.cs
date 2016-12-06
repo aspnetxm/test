@@ -3,8 +3,8 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Repository.Infrastructure;
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Data.Infrastructure;
+using Galaxy.Entity.SystemSecurity;
 
 namespace Galaxy.Repository.Interface.SystemSecurity
 {

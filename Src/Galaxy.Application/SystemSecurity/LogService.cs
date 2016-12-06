@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Galaxy.Utility;
-using Galaxy.Domain.Entity.SystemSecurity;
-using Galaxy.Repository.Infrastructure;
+using Galaxy.Entity.SystemSecurity;
+using Galaxy.Data.Infrastructure;
 using Galaxy.Repository.Interface.SystemSecurity;
-using Galaxy.DTO.CommonModule;
+using Galaxy.Infrastructure;
 
 
 namespace Galaxy.Service.SystemSecurity

@@ -3,7 +3,7 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Galaxy.Mapping.SystemManage
@@ -12,7 +12,7 @@ namespace Galaxy.Mapping.SystemManage
     {
         public RoleAuthorizeMap()
         {
-            this.ToTable("Sys_RoleAuthorize");
+            this.ToTable("RoleAuthorize");
             this.HasKey(t => t.Id);
         }
     }

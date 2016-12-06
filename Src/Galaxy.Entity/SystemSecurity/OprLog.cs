@@ -4,9 +4,9 @@
  * 修改记录： 
 *********************************************************************************/
 using System;
-using Galaxy.Domain.Infrastructure;
+using Galaxy.Entity.Infrastructure;
 
-namespace Galaxy.Domain.Entity.SystemSecurity
+namespace Galaxy.Entity.SystemSecurity
 {
     /// <summary>
     /// 日志

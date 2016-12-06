@@ -12,9 +12,8 @@ namespace Galaxy.Repository.Infrastructure
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class, new()
     {
-        private IDbContext _dbcontext;//= new GalaxyDbContext();
+        private IDbContext _dbcontext;
 
-        //IUnitOfWork _unitOfWork;
         public RepositoryBase(IDbContext dbContext)
         {
             _dbcontext = dbContext;

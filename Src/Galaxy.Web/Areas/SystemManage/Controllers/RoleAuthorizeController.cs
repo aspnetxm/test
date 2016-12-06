@@ -5,7 +5,7 @@
 *********************************************************************************/
 using Galaxy.Service.SystemManage;
 using Galaxy.Utility;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;

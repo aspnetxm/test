@@ -9,7 +9,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 
 namespace Galaxy.Repository.Infrastructure.Data
 {
@@ -26,9 +26,7 @@ namespace Galaxy.Repository.Infrastructure.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("Sys_User");
-
-            string assembleFileName = Assembly.GetExecutingAssembly().CodeBase.Replace("Galaxy.Data.DLL", "Galaxy.Mapping.DLL").Replace("file:///", "");
+            string assembleFileName = Assembly.GetExecutingAssembly().CodeBase.Replace("Galaxy.Repository.DLL", "Galaxy.Mapping.DLL").Replace("file:///", "");
             Assembly asm = Assembly.LoadFile(assembleFileName);
             var typesToRegister = asm.GetTypes()
             .Where(type => !String.IsNullOrEmpty(type.Namespace))

@@ -1,9 +1,10 @@
 ﻿using Galaxy.Utility;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Galaxy.Web
 {
-    [HandlerLogin]
+    [Authorize]
     public abstract class ControllerBase : Controller
     {
         public Log FileLog
@@ -11,20 +12,17 @@ namespace Galaxy.Web
             get { return LogFactory.GetLogger(this.GetType().ToString()); }
         }
         [HttpGet]
-        [HandlerAuthorize]
         public virtual ActionResult Index()
         {
             return View();
         }
         [HttpGet]
-        [HandlerAuthorize]
         public virtual ActionResult Form()
         {
             return View();
         }
 
         [HttpGet]
-        [HandlerAuthorize]
         public virtual ActionResult Details()
         {
             return View();

@@ -40,7 +40,7 @@ namespace Galaxy.Web.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return Json(new { state = "error", message = ModelState.ToError() });
+                    return Json(new { state = "error", message = ModelState.ToError().ToJson() });
                 }
 
                 var r = await _userService.Verification(model.UserName, model.Password);

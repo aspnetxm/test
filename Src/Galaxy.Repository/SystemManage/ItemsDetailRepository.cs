@@ -8,8 +8,8 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Text;
 
-using Galaxy.Repository.Infrastructure;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Data.Infrastructure;
+using Galaxy.Entity.SystemManage;
 using Galaxy.Repository.Interface.SystemManage;
 
 

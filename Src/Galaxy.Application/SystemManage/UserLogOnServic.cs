@@ -4,9 +4,9 @@
  * 修改记录： 
 *********************************************************************************/
 using Galaxy.Utility;
-using Galaxy.Domain.Entity.SystemManage;
+using Galaxy.Entity.SystemManage;
 using Galaxy.Repository.Interface.SystemManage;
-using Galaxy.Repository.Infrastructure;
+using Galaxy.Data.Infrastructure;
 
 namespace Galaxy.Service.SystemManage
 {

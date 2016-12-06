@@ -3,10 +3,10 @@
  * 描述：  
  * 修改记录： 
 *********************************************************************************/
-using Galaxy.Repository.Infrastructure;
-using Galaxy.Domain.Entity.SystemSecurity;
+using Galaxy.Data.Infrastructure;
+using Galaxy.Entity.SystemSecurity;
 using Galaxy.Repository.Interface.SystemSecurity;
-using Galaxy.Repository.Infrastructure.Data;
+using Galaxy.Data;
 
 namespace Galaxy.Repository.SystemSecurity
 {
@@ -33,8 +33,6 @@ namespace Galaxy.Repository.SystemSecurity
             //dbBackupEntity.FileSize = FileHelper.ToFileSize(FileHelper.GetFileSize(dbBackupEntity.FilePath));
             //dbBackupEntity.FilePath = "/Resource/DbBackup/" + dbBackupEntity.FileName;
             //this.Insert(dbBackupEntity);
-
-
         }
     }
 }
