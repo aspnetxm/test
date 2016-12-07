@@ -17,7 +17,7 @@ namespace Galaxy.Web.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+           
             return View();
         }
 
@@ -25,6 +25,11 @@ namespace Galaxy.Web.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Default()
+        {
             return View();
         }
     }

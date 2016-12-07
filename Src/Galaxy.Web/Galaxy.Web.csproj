@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\ClientsDataController.cs" />
     <Compile Include="Framework\AdminAuthorizeAttribute.cs" />
     <Compile Include="Framework\ControllerBase.cs" />
     <Compile Include="Framework\HandlerAjaxOnlyAttribute.cs" />
@@ -213,11 +214,44 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Galaxy-about.css" />
     <Content Include="Content\Galaxy-theme.css" />
     <Content Include="Content\Galaxy-ui.css" />
     <Content Include="Content\Galaxy-font.css" />
     <Content Include="Content\Galaxy-login.css" />
+    <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\alipay.jpg" />
+    <Content Include="Content\img\alipayimg.png" />
+    <Content Include="Content\img\button_pm_close.png" />
+    <Content Include="Content\img\cy-reward-title-bg.jpg" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\radio1.jpg" />
+    <Content Include="Content\img\radio2.jpg" />
+    <Content Include="Content\img\samples\angelina-300.jpg" />
+    <Content Include="Content\img\samples\emma-300.jpg" />
+    <Content Include="Content\img\samples\emma.png" />
+    <Content Include="Content\img\samples\george.png" />
+    <Content Include="Content\img\samples\head_120.png" />
+    <Content Include="Content\img\samples\jessica.jpg" />
+    <Content Include="Content\img\samples\kunis-300.jpg" />
+    <Content Include="Content\img\samples\kunis.png" />
+    <Content Include="Content\img\samples\lima-300.jpg" />
+    <Content Include="Content\img\samples\messages-photo-1.png" />
+    <Content Include="Content\img\samples\messages-photo-2.png" />
+    <Content Include="Content\img\samples\messages-photo-3.png" />
+    <Content Include="Content\img\samples\miranda-560-300.png" />
+    <Content Include="Content\img\samples\robert-300.jpg" />
+    <Content Include="Content\img\samples\robert.png" />
+    <Content Include="Content\img\samples\ryan-300.jpg" />
+    <Content Include="Content\img\samples\ryan.png" />
+    <Content Include="Content\img\samples\scarlet-159.png" />
+    <Content Include="Content\img\samples\scarlet.png" />
+    <Content Include="Content\img\samples\scarlett-300.jpg" />
+    <Content Include="Content\img\signet.gif" />
+    <Content Include="Content\img\wechat.jpg" />
+    <Content Include="Content\img\weipayimg.png" />
+    <Content Include="Content\img\weixin_nfine.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -268,7 +302,21 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\charts\Chart.js" />
+    <Content Include="Scripts\charts\Chart.min.js" />
     <Content Include="Scripts\cookie\jquery.cookie.js" />
+    <Content Include="Scripts\dialog\dialog.css" />
+    <Content Include="Scripts\dialog\dialog.js" />
+    <Content Include="Scripts\dialog\img\icon-ext.png" />
+    <Content Include="Scripts\dialog\img\icon.png" />
+    <Content Include="Scripts\dialog\img\loading-0.gif" />
+    <Content Include="Scripts\dialog\img\loading-1.gif" />
+    <Content Include="Scripts\dialog\img\loading-2.gif" />
+    <Content Include="Scripts\dialog\img\loading-3.gif" />
+    <Content Include="Scripts\framework\framework-clientdata.js" />
+    <Content Include="Scripts\framework\framework-ui.js" />
+    <Content Include="Scripts\framework\index.js" />
+    <Content Include="Scripts\framework\indextab.js" />
     <Content Include="Scripts\jqgrid\grid.locale-cn.js" />
     <Content Include="Scripts\jqgrid\jqgrid.css" />
     <Content Include="Scripts\jqgrid\jqgrid.min.js" />
@@ -296,6 +344,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\layout\jquery.layout.js" />
+    <Content Include="Scripts\loading\pace.min.js" />
     <Content Include="Scripts\md5\jquery.md5.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -384,10 +433,12 @@
     <Content Include="Views\Shared\_Form.cshtml" />
     <Content Include="Views\Shared\_Index.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Home\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\SystemManage\Models\" />
+    <Folder Include="Views\ClientsData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

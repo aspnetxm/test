@@ -42,9 +42,9 @@ namespace Galaxy.Test
             //mock.Setup(o => o.Get(user.Id)).Returns(user);
 
 
-            var mockClubRepository = new Mock<IUserRepository>();
+            var mockUserRepository = new Mock<IUserRepository>();
 
-            mockClubRepository.Setup(mr => mr.Get(It.IsAny<Guid>()));
+            mockUserRepository.Setup(mr => mr.Get(It.IsAny<Guid>())).Returns(User);
 
 
 
